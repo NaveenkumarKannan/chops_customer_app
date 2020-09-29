@@ -1,0 +1,54 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+
+    <style name="FullscreenTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="fontFamily">@font/ubuntu</item>
+        <item name="android:textColor">@color/colortext</item>
+        <item name="android:textColorSecondary">@color/colorblack</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="DeatilsTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colortext</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Font" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:textColor">@color/colorblack</item>
+        <item name="fontFamily">@font/ubuntu_bold</item>
+
+    </style>
+    <style name="HomeTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="fontFamily">@font/ubuntu_light</item>
+        <item name="android:textColor">@color/colortext</item>
+        <item name="android:textColorSecondary">@color/colorblack</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="them2" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="fontFamily">@font/ubuntu_light</item>
+        <item name="android:textColor">@color/colortext</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorstatus</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="them3" parent="Theme.AppCompat.Light">">
+        <item name="fontFamily">@font/ubuntu_light</item>
+        <item name="android:textColor">@color/colortext</item>
+        <item name="colorPrimary">@color/colorwhite</item>
+        <item name="colorPrimaryDark">@color/colorstatus</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+</resources>

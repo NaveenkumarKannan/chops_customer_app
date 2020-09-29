@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Chops</string>
+    <string name="singin">Sign In</string>
+    <string name="singup">Sign Up</string>
+    <string name="forgot">Reset</string>
+    <string name="enteremial">Enter Your Email Address</string>
+    <string name="password">Enter Your Password</string>
+    <string name="newpassword">Enter New Password</string>
+    <string name="mobile">Enter Your Mobile Number</string>
+    <string name="city">Enter Your City</string>
+    <string name="navigation_drawer_open">navigation drawer open</string>
+    <string name="navigation_drawer_close">navigation drawer close</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="address">Address Line 1</string>
+    <string name="address2">Address Line 2</string>
+    <string name="pincode">Pincode</string>
+    <string name="stats">Enter Your Stats</string>
+    <string name="submit">Submit</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="internet_error">No Internet Connection</string>
+    <string name="type">Home/office</string>
+    <string name="emtydata">No Product</string>
+    <string name="confpassword">Confirm Password</string>
+</resources>

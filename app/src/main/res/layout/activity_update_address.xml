@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/colorwhite"
+    android:orientation="vertical"
+    tools:context=".activity.SignInActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center|top"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|top"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/ed_type"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/address"
+                android:background="@drawable/edittext"
+                android:layout_marginTop="10dp"
+                android:hint="@string/type" />
+
+            <EditText
+                android:id="@+id/ed_address1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/address"
+                android:background="@drawable/edittext"
+                android:layout_marginTop="10dp"
+                android:hint="@string/address" />
+
+            <EditText
+                android:id="@+id/ed_address2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/address"
+                android:background="@drawable/edittext"
+                android:layout_marginTop="10dp"
+                android:hint="@string/address2" />
+
+            <EditText
+                android:id="@+id/ed_pincode"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/address"
+                android:background="@drawable/edittext"
+                android:layout_marginTop="10dp"
+                android:hint="@string/pincode"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/ed_city"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/address"
+                android:background="@drawable/edittext"
+                android:layout_marginTop="10dp"
+                android:hint="@string/city" />
+
+            <EditText
+                android:id="@+id/ed_stats"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/address"
+                android:background="@drawable/edittext"
+                android:layout_marginTop="10dp"
+                android:hint="@string/stats" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:padding="3dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/colorblack" />
+
+        <Button
+            android:id="@+id/btn_singup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/button"
+            android:text="@string/submit"
+            android:textAllCaps="false"
+            style="@style/Font"
+            android:textColor="@color/colorwhite" />
+    </LinearLayout>
+</LinearLayout>

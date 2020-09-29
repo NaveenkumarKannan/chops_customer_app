@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.chops.app">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:name=".MyApplication"
+        android:theme="@style/FullscreenTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".activity.FAQActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/them2"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.ForgotActivity"
+            android:theme="@style/them3" />
+        <activity android:name=".activity.CongratulactionActivity" />
+        <activity android:name=".activity.CancelActivity" />
+        <activity android:name=".activity.SearchActivity" />
+        <activity
+            android:name=".activity.CodActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.UpdateAddressActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/them3"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.AddressActivity"
+            android:screenOrientation="portrait"
+
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.MyordersActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/them3"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/them3"
+
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.ItemDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/DeatilsTheme"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.HomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HomeTheme"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.SignUpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/them3"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.SignInActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/them3"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.LoginstartActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/them3"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.FirstActivity"
+            android:screenOrientation="fullSensor">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".activity.RazerpayActivity" />
+        <activity
+            android:name=".activity.NotificationDetailsActivity"
+            android:theme="@style/them3"></activity>
+        <activity
+            android:name=".activity.NotificationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/them3"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity
+            android:name=".activity.TramsAndConditionActivity"
+            android:label="Terms &amp; Conditions"
+            android:screenOrientation="portrait"
+            android:theme="@style/them3"
+            tools:ignore="LockedOrientationActivity" />
+
+
+        <activity
+            android:name=".activity.ContectusActivity"
+            android:label="Contact us"
+            android:screenOrientation="portrait"
+            android:theme="@style/them3"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.AboutsActivity"
+            android:label="About"
+            android:screenOrientation="portrait"
+            android:theme="@style/them3"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity
+            android:name=".activity.PrivecyPolicyActivity"
+            android:label="Privecy Policy"
+            android:screenOrientation="portrait"
+            android:theme="@style/them3"
+            tools:ignore="LockedOrientationActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+    </application>
+
+
+</manifest>

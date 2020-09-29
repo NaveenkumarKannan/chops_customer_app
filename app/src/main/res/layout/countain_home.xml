@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/HomeTheme">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/toolbar_title"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:visibility="gone"
+                android:src="@drawable/chopslogo"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:padding="3dp"
+                android:src="@drawable/chopslogo" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end">
+
+
+                <RelativeLayout
+                    android:id="@+id/rlt_noti"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:padding="2dp">
+
+                    <ImageView
+                        android:id="@+id/img_notification"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_notification" />
+
+                    <TextView
+                        android:id="@+id/txt_noti"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="-8dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/circle2"
+                        android:gravity="center"
+                        android:maxLength="2"
+                        android:text=""
+                        android:visibility="gone"
+                        android:textColor="@color/colorblack"
+                        android:textSize="8dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+
+                <ImageView
+                    android:id="@+id/img_search"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:visibility="gone"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_search" />
+
+                <RelativeLayout
+                    android:layout_width="45dp"
+                    android:layout_height="45dp">
+
+                    <ImageView
+                        android:id="@+id/img_cart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_supermarket" />
+
+                    <TextView
+                        android:id="@+id/txt_Count"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/circle2"
+                        android:gravity="center"
+                        android:maxLength="2"
+                        android:text="10"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="8dp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:background="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/home_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/lvl_mycart" />
+
+        <LinearLayout
+            android:id="@+id/lvl_mycart"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorwhite"
+            android:gravity="center|right"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/btn_gotocart"
+                style="@style/Font"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:layout_margin="5dp"
+                android:background="@drawable/rounded_add"
+                android:drawableLeft="@drawable/ic_shopping"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:gravity="center"
+                android:text=" Go To Cart  "
+                android:textColor="@color/colorwhite" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "583565828672",
+    "firebase_url": "https://chops-erode.firebaseio.com",
+    "project_id": "chops-erode",
+    "storage_bucket": "chops-erode.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583565828672:android:5a7f964edc7640828bf5a5",
+        "android_client_info": {
+          "package_name": "com.chops.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583565828672-ftsavr7fps24ph9tirjen2hc8evel4ac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVJaTJQbXH9AbUHccyJVN9pzDLzM6GQoI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583565828672-ftsavr7fps24ph9tirjen2hc8evel4ac.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
