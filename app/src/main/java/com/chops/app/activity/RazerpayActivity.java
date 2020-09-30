@@ -39,6 +39,8 @@ public class RazerpayActivity extends AppCompatActivity implements GetResult.MyL
     String pid;
     String quantity;
     String total;
+    int skin_type = 0;
+    int pieces_type = 0;
     DatabaseHelper helper;
 
     @Override
@@ -55,6 +57,9 @@ public class RazerpayActivity extends AppCompatActivity implements GetResult.MyL
             pid = extras.getString("pid");
             quantity = extras.getString("quantity");
             total = extras.getString("total");
+            skin_type  = extras.getInt("skin_type");
+            pieces_type  = extras.getInt("pieces_type");
+
             startPayment(total);
 
         }
@@ -130,6 +135,8 @@ public class RazerpayActivity extends AppCompatActivity implements GetResult.MyL
             jsonObject.put("pid", pid);
             jsonObject.put("qty", quantity);
             jsonObject.put("total", total);
+            jsonObject.put("skin_type", skin_type);
+            jsonObject.put("pieces_type", pieces_type);
             jsonObject.put("type", "razerpay");
 
             JsonParser jsonParser = new JsonParser();

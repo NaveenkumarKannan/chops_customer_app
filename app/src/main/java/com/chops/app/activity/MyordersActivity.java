@@ -232,9 +232,11 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
                         animate.setDuration(500);
                         animate.setFillAfter(true);
                         holder.lvlItem.startAnimation(animate);
+                        holder.btnCancel.setVisibility(View.GONE);
                         holder.lvlItem.setVisibility(View.GONE);
                     } else {
                         holder.lvlItem.setVisibility(View.VISIBLE);
+                        holder.btnCancel.setVisibility(View.VISIBLE);
                         TranslateAnimation animate = new TranslateAnimation(
                                 0,
                                 0,
@@ -265,6 +267,8 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
             TextView txtDateandstatus;
             @BindView(R.id.lvl_item)
             LinearLayout lvlItem;
+            @BindView(R.id.btn_cancel)
+            Button btnCancel;
             @BindView(R.id.lvl_click)
             LinearLayout lvlClick;
             @BindView(R.id.img_right)
@@ -291,27 +295,17 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
             TextView txtTitle = view.findViewById(R.id.txt_title);
             TextView txtItems = view.findViewById(R.id.txt_items);
             TextView txtPrice = view.findViewById(R.id.txt_price);
-            Button btnCncel = view.findViewById(R.id.btn_cancel);
 
-            btnCncel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent=new Intent(MyordersActivity.this,CancelActivity.class);
-                    startActivity(intent);
-                }
-            });
-
-
-
-
-
-            Glide.with(MyordersActivity.this).load(Base_URL + listdatum.getImage()).placeholder(R.drawable.slider).into(imgView);
+        Glide.with(MyordersActivity.this).load(Base_URL + listdatum.getImage()).placeholder(R.drawable.slider).into(imgView);
             txtTitle.setText("" + listdatum.getTitle());
             txtItems.setText(" X " + listdatum.getQuantity() + " Items");
             txtPrice.setText(sessionManager.getStringData(SessionManager.CURRNCY) + " " + listdatum.getPrice() + "");
 
             lnrView.addView(view);
         }
+    }
+    private void CancelOrder(String oid) {
+
     }
 
     @Override

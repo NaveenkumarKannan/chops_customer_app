@@ -141,6 +141,16 @@
                 android:layout_height="1dp"
                 android:layout_margin="5dp"
                 android:background="@color/colormenubg" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ubuntu_medium"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:layout_marginLeft="10dp"
+                android:text="Skin types:"
+                android:textColor="@color/colorblack"
+                android:textSize="14dp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -151,6 +161,7 @@
                     android:id="@+id/rgSkin"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="horizontal"
                     android:gravity="center|left"
                     android:weightSum="1">
@@ -161,7 +172,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:padding="10dp"
+                        android:padding="2dp"
                         android:text="Skin"
                         android:textColor="@color/colorblack" />
 
@@ -171,10 +182,73 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="false"
-                        android:padding="10dp"
+                        android:padding="2dp"
                         android:text="Without Skin"
                         android:textColor="@color/colorblack" />
                 </RadioGroup>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="5dp"
+                android:background="@color/colormenubg" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ubuntu_medium"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:layout_marginLeft="10dp"
+                android:text="Pieces types:"
+                android:textColor="@color/colorblack"
+                android:textSize="14dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp">
+
+                <RadioGroup
+                    android:id="@+id/rgPiece"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center|left"
+                    android:weightSum="1">
+
+                    <RadioButton
+                        android:id="@+id/rbPieceSmall"
+                        style="@style/Font"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:padding="2dp"
+                        android:text="Small Piece"
+                        android:textColor="@color/colorblack" />
+
+                    <RadioButton
+                        android:id="@+id/rbPieceMedium"
+                        style="@style/Font"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:padding="2dp"
+                        android:text="Medium Piece"
+                        android:textColor="@color/colorblack" />
+
+                    <RadioButton
+                        android:id="@+id/rbPieceLarge"
+                        style="@style/Font"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:padding="2dp"
+                        android:text="Large Piece"
+                        android:textColor="@color/colorblack" />
+                </RadioGroup>
+
             </LinearLayout>
 
             <LinearLayout
@@ -334,6 +408,39 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5sp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/ubuntu_medium"
+                        android:padding="10dp"
+                        android:text="Price"
+                        android:textColor="@color/colorblack"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/txt_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/ubuntu_light"
+                        android:gravity="center|right"
+                        android:padding="5dp"
+                        android:text="180.00"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -388,39 +495,7 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5sp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/ubuntu_medium"
-                        android:padding="10dp"
-                        android:text="Price"
-                        android:textColor="@color/colorblack"
-                        android:textSize="14dp" />
-
-                    <TextView
-                        android:id="@+id/txt_price"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/ubuntu_light"
-                        android:gravity="center|right"
-                        android:padding="5dp"
-                        android:text="180.00"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="16dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout

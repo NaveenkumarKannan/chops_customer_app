@@ -62,4 +62,7 @@ public interface UserService {
 
     @POST(APIClient.Append_URL + "n_read.php")
     Call<JsonObject> readNoti(@Body JsonObject object);
+
+    @POST(APIClient.Append_URL + "order_cancel.php")
+    Call<JsonObject> orderCancel(@Body JsonObject object);
 }

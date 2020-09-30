@@ -12,8 +12,6 @@ public class SessionManager {
     SharedPreferences.Editor mEditor;
 
     public static boolean ISCART = false;
-
-
     public static String USERDATA = "Userdata";
     public static String USERLOGIN = "UserLogin";
     public static String CURRNCY = "Currncy";

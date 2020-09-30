@@ -38,6 +38,8 @@ public class SelectPaymentFragment extends Fragment {
     String pid;
     String quantity;
     String total;
+    int skin_type;
+    int pieces_type;
 
 
     public SelectPaymentFragment() {
@@ -67,11 +69,15 @@ public class SelectPaymentFragment extends Fragment {
         pid = bundle.getString("pid");
         quantity = bundle.getString("quantity");
         total = bundle.getString("total");
+        skin_type= bundle.getInt("skin_type");
+        pieces_type = bundle.getInt("pieces_type");
 
         Log.e("aid",""+aid);
         Log.e("pid",""+pid);
         Log.e("quantity",""+quantity);
         Log.e("total",""+total);
+        Log.e("skin_type",""+skin_type);
+        Log.e("pieces_type",""+pieces_type);
 
         return view;
     }
@@ -84,6 +90,8 @@ public class SelectPaymentFragment extends Fragment {
             intent.putExtra("pid",pid);
             intent.putExtra("quantity",quantity);
             intent.putExtra("total",total);
+            intent.putExtra("pieces_type",pieces_type);
+            intent.putExtra("skin_type",skin_type);
             startActivity(intent);
             getActivity().finish();
 
@@ -93,6 +101,8 @@ public class SelectPaymentFragment extends Fragment {
             intent.putExtra("pid",pid);
             intent.putExtra("quantity",quantity);
             intent.putExtra("total",total);
+            intent.putExtra("pieces_type",pieces_type);
+            intent.putExtra("skin_type",skin_type);
             startActivity(intent);
             getActivity().finish();
         }

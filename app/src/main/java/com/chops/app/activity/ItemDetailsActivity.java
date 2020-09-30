@@ -69,11 +69,20 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
     @BindView((R.id.rgSkin))
     RadioGroup rgSkin;
+    @BindView((R.id.rgPiece))
+    RadioGroup rgPiece;
     @BindView(R.id.rbTrue)
     RadioButton rbTrue;
     @BindView(R.id.rbFalse)
     RadioButton rbFalse;
+    @BindView(R.id.rbPieceSmall)
+    RadioButton rbPieceSmall;
+    @BindView(R.id.rbPieceMedium)
+    RadioButton rbPieceMedium;
+    @BindView(R.id.rbPieceLarge)
+    RadioButton rbPieceLarge;
     int skin = 0;
+    int pieces = 0;
 
     DatabaseHelper helper;
     final int[] count = {0};
@@ -101,13 +110,29 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 }
             }
         });
-        if(produc.getSkin() == 1){
+        rgPiece.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.rbPieceSmall:
+                        pieces = 2;
+                        break;
+                    case R.id.rbPieceMedium:
+                        pieces = 1;
+                        break;
+                    case R.id.rbPieceLarge:
+                        pieces = 0;
+                        break;
+                }
+            }
+        });
+        /*if(produc.getSkin() == 1){
             rbTrue.setChecked(true);
             rbFalse.setChecked(false);
         }else {
             rbTrue.setChecked(false);
             rbFalse.setChecked(true);
-        }
+        }*/
         Glide.with(ItemDetailsActivity.this).load(Base_URL + "/" + produc.getImage()).into(imgP);
         txtTitle.setText("" + produc.getName());
         txtDesc.setText("" + produc.getSdesc());

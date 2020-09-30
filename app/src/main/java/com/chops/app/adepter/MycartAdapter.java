@@ -115,6 +115,8 @@ public class MycartAdapter extends RecyclerView.Adapter<MycartAdapter.ViewHolder
     public void total() {
         double total = 0;
         for (int i = 0; i < listdata.size(); i++) {
+            GetService.skin_type=listdata.get(i).getSkin();
+            GetService.pieces_type=listdata.get(i).getPieces();
             Productlist productlist = listdata.get(i);
             double temp = Double.parseDouble(productlist.getPrice()) * productlist.getContity();
             total = total + temp;
@@ -122,6 +124,7 @@ public class MycartAdapter extends RecyclerView.Adapter<MycartAdapter.ViewHolder
         txtTotals.setText(sessionManager.getStringData(SessionManager.CURRNCY) + +total);
         txtNoitem.setText(listdata.size() + " items Added");
         GetService.totalTemp=total;
+
     }
 
     @Override

@@ -87,6 +87,7 @@
             android:orientation="vertical"
             android:visibility="gone">
 
+
         </LinearLayout>
     </LinearLayout>
 
@@ -95,5 +96,23 @@
         android:layout_height="1dp"
         android:layout_margin="5dp"
         android:background="@color/colormenubg" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="4dp"
+        android:visibility="gone"
+        android:gravity="end">
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text=" Cancel Order "
+            android:layout_weight="2"
+            android:textAllCaps="false"
+            android:textColor="@color/colorwhite"
+            android:fontFamily="@font/ubuntu_medium"
+            android:background="@drawable/button"/>
+    </LinearLayout>
 
 </LinearLayout>

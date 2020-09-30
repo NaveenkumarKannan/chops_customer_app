@@ -29,6 +29,8 @@ public class CodActivity extends AppCompatActivity implements GetResult.MyListen
     String pid;
     String quantity;
     String total;
+    int skin_type = 0;
+    int pieces_type = 0;
 
     UserData userData;
     SessionManager sessionManager;
@@ -49,6 +51,8 @@ public class CodActivity extends AppCompatActivity implements GetResult.MyListen
             pid = extras.getString("pid");
             quantity = extras.getString("quantity");
             total = extras.getString("total");
+            skin_type  = extras.getInt("skin_type");
+            pieces_type  = extras.getInt("pieces_type");
             sendOrder();
         }
 
@@ -64,6 +68,8 @@ public class CodActivity extends AppCompatActivity implements GetResult.MyListen
             jsonObject.put("pid", pid);
             jsonObject.put("qty", quantity);
             jsonObject.put("total", total);
+            jsonObject.put("skin_type", skin_type);
+            jsonObject.put("pieces_type", pieces_type);
             jsonObject.put("type", "cod");
 
             JsonParser jsonParser = new JsonParser();

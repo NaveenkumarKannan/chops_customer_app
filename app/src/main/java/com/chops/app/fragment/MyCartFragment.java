@@ -159,6 +159,8 @@ public class MyCartFragment extends Fragment {
                 bundle.putString("pid", pid);
                 bundle.putString("quantity", quantity);
                 bundle.putString("total", "" + GetService.totalTemp);
+                bundle.putInt("skin_type", Integer.parseInt("" + GetService.skin_type));
+                bundle.putInt("pieces_type", Integer.parseInt("" + GetService.pieces_type));
                 fragment.setArguments(bundle);
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.home_frame, fragment).addToBackStack(null).commit();
@@ -175,11 +177,15 @@ public class MyCartFragment extends Fragment {
     public void total() {
         double total = 0;
         for (int i = 0; i < mycartList.size(); i++) {
+
             Productlist productlist = mycartList.get(i);
+            GetService.skin_type=productlist.getSkin();
+            GetService.pieces_type=productlist.getPieces();
             double temp = Double.parseDouble(productlist.getPrice()) * productlist.getContity();
             total = total + temp;
 
         }
+
         GetService.totalTemp = total;
         txtTotals.setText(sessionManager.getStringData(CURRNCY) + " " + total);
         txtNoitem.setText(mycartList.size() + " items Added");
