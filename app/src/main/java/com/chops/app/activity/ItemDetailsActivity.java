@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -65,6 +67,14 @@ public class ItemDetailsActivity extends AppCompatActivity {
     @BindView(R.id.imgP)
     ImageView imgP;
 
+    @BindView((R.id.rgSkin))
+    RadioGroup rgSkin;
+    @BindView(R.id.rbTrue)
+    RadioButton rbTrue;
+    @BindView(R.id.rbFalse)
+    RadioButton rbFalse;
+    int skin = 0;
+
     DatabaseHelper helper;
     final int[] count = {0};
     SessionManager sessionManager;
@@ -78,6 +88,26 @@ public class ItemDetailsActivity extends AppCompatActivity {
         produc = (Productlist) getIntent().getSerializableExtra("MyClass");
         sessionManager = new SessionManager(this);
 
+        rgSkin.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.rbTrue:
+                        skin = 1;
+                        break;
+                    case R.id.rbFalse:
+                        skin = 0;
+                        break;
+                }
+            }
+        });
+        if(produc.getSkin() == 1){
+            rbTrue.setChecked(true);
+            rbFalse.setChecked(false);
+        }else {
+            rbTrue.setChecked(false);
+            rbFalse.setChecked(true);
+        }
         Glide.with(ItemDetailsActivity.this).load(Base_URL + "/" + produc.getImage()).into(imgP);
         txtTitle.setText("" + produc.getName());
         txtDesc.setText("" + produc.getSdesc());

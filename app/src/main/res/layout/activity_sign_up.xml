@@ -38,6 +38,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:singleLine="true"
                 android:id="@+id/ed_email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -50,6 +51,7 @@
                 android:textColorHint="@color/colortext" />
 
             <EditText
+                android:singleLine="true"
                 android:id="@+id/ed_password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"

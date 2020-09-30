@@ -148,7 +148,7 @@
                 android:layout_marginLeft="10dp">
 
                 <RadioGroup
-                    android:id="@+id/radioGroup"
+                    android:id="@+id/rgSkin"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -156,7 +156,7 @@
                     android:weightSum="1">
 
                     <RadioButton
-                        android:id="@+id/radioButton"
+                        android:id="@+id/rbTrue"
                         style="@style/Font"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -166,7 +166,7 @@
                         android:textColor="@color/colorblack" />
 
                     <RadioButton
-                        android:id="@+id/radioButton2"
+                        android:id="@+id/rbFalse"
                         style="@style/Font"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

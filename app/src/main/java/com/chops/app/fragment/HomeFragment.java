@@ -116,7 +116,7 @@ public class HomeFragment extends Fragment implements GetResult.MyListener {
         reyPopular.setHasFixedSize(true);
         reyPopular.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         setHight();
-        getDesbord();
+        getDashboard();
 
         return view;
     }
@@ -142,13 +142,16 @@ public class HomeFragment extends Fragment implements GetResult.MyListener {
         fragmentManager.beginTransaction().replace(R.id.home_frame, fragmentClass).addToBackStack(null).commit();
     }
 
-    private void getDesbord() {
+    private void getDashboard() {
         GetService.showPrograss(getActivity());
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("uid", userData.getId());
             JsonParser jsonParser = new JsonParser();
-            Call<JsonObject> call = APIClient.getInterface().getHome((JsonObject) jsonParser.parse(jsonObject.toString()));
+            Log.e("HomeFragment", "->> " + userData.getId().toString());
+            JsonObject jsonObject1 = (JsonObject) jsonParser.parse(jsonObject.toString());
+            Log.e("HomeFragment", "JsonObject ->> " + new Gson().toJson(jsonObject1));
+            Call<JsonObject> call = APIClient.getInterface().getHome(jsonObject1);
             GetResult getResult = new GetResult();
             getResult.setMyListener(this);
             getResult.callForLogin(call, "1");

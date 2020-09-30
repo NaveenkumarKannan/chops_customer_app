@@ -40,7 +40,6 @@
                     android:textColor="@color/colortext"
                     android:textColorHint="@color/colortext"
                     android:hint="@string/firstname" />
-
                 <EditText
                     android:singleLine="true"
                     android:layout_weight="1"

@@ -31,6 +31,17 @@ public class Productlist implements Serializable {
     @SerializedName("status")
     private String mStatus;
 
+    public int getSkin() {
+        return skin;
+    }
+
+    public void setSkin(int skin) {
+        this.skin = skin;
+    }
+
+    @SerializedName("skin")
+    private int skin;
+
     @SerializedName("types")
     private String mTypes;
 
