@@ -110,6 +110,8 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 }
             }
         });
+
+
         rgPiece.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
