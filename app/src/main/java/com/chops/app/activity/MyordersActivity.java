@@ -235,6 +235,7 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
                         holder.btnCancel.setVisibility(View.GONE);
                         holder.lvlItem.setVisibility(View.GONE);
                     } else {
+                        //naveen
                         holder.lvlItem.setVisibility(View.VISIBLE);
                         holder.btnCancel.setVisibility(View.VISIBLE);
                         TranslateAnimation animate = new TranslateAnimation(
