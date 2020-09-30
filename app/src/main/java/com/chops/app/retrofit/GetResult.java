@@ -1,6 +1,7 @@
 package com.chops.app.retrofit;
 
 import android.util.Log;
+import android.view.View;
 
 
 import com.chops.app.utils.GetService;
@@ -34,6 +35,8 @@ public class GetResult {
             }
         });
     }
+
+
 
     public interface MyListener {
         // you can define any parameter as per your requirement

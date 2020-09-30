@@ -217,6 +217,27 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
             holder.txtPricetotla.setText(sessionManager.getStringData(SessionManager.CURRNCY) + " " + order.getTotalPrice());
             holder.txtDateandstatus.setText("" + order.getStatus() + " on " + order.getOdate());
             setJoinPlayrList(holder.lvlItem, order.getListdata());
+            holder.btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    GetService.showPrograss(MyordersActivity.this);
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("oid",order.getOrderid());
+
+                        JsonParser jsonParser = new JsonParser();
+                        Call<JsonObject> cancel = APIClient.getInterface().orderCancel((JsonObject) jsonParser.parse(jsonObject.toString()));
+                        GetResult getResult = new GetResult();
+                        getResult.callForLogin(cancel, "1");
+                        holder.txtCancel.setVisibility(View.VISIBLE);
+                        holder.lvlbtn.setVisibility(View.GONE);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Intent intent=new Intent(MyordersActivity.this,CancelActivity.class);
+                    startActivity(intent);
+                }
+            });
 
             holder.lvlClick.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -232,12 +253,12 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
                         animate.setDuration(500);
                         animate.setFillAfter(true);
                         holder.lvlItem.startAnimation(animate);
-                        holder.btnCancel.setVisibility(View.GONE);
                         holder.lvlItem.setVisibility(View.GONE);
+                        holder.lvlbtn.setVisibility(View.GONE);
                     } else {
                         //naveen
                         holder.lvlItem.setVisibility(View.VISIBLE);
-                        holder.btnCancel.setVisibility(View.VISIBLE);
+                        holder.lvlbtn.setVisibility(View.VISIBLE);
                         TranslateAnimation animate = new TranslateAnimation(
                                 0,
                                 0,
@@ -246,7 +267,6 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
                         animate.setDuration(500);
                         animate.setFillAfter(true);
                         holder.lvlItem.startAnimation(animate);
-
                         holder.imgRight.setBackgroundResource(R.drawable.ic_expand);
 
                     }
@@ -270,8 +290,12 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
             LinearLayout lvlItem;
             @BindView(R.id.btn_cancel)
             Button btnCancel;
+            @BindView(R.id.txt_cancel)
+            TextView txtCancel;
             @BindView(R.id.lvl_click)
             LinearLayout lvlClick;
+            @BindView(R.id.lvlbtn)
+            LinearLayout lvlbtn;
             @BindView(R.id.img_right)
             ImageView imgRight;
 
