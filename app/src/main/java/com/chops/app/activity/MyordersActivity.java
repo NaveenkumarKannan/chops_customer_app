@@ -235,7 +235,6 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
                         holder.btnCancel.setVisibility(View.GONE);
                         holder.lvlItem.setVisibility(View.GONE);
                     } else {
-                        //naveen
                         holder.lvlItem.setVisibility(View.VISIBLE);
                         holder.btnCancel.setVisibility(View.VISIBLE);
                         TranslateAnimation animate = new TranslateAnimation(
@@ -250,6 +249,16 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
                         holder.imgRight.setBackgroundResource(R.drawable.ic_expand);
 
                     }
+                }
+            });
+            holder.btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    JsonParser jsonParser = new JsonParser();
+                    Call<JsonObject> call = APIClient.getInterface().deleteAddress((JsonObject) jsonParser.parse(jsonObject.toString()));
+                    GetResult getResult = new GetResult();
+
+                    getResult.callForLogin(call, "2");
                 }
             });
         }
@@ -269,7 +278,7 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
             @BindView(R.id.lvl_item)
             LinearLayout lvlItem;
             @BindView(R.id.btn_cancel)
-            Button btnCancel;
+            LinearLayout btnCancel;
             @BindView(R.id.lvl_click)
             LinearLayout lvlClick;
             @BindView(R.id.img_right)
@@ -297,7 +306,7 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
             TextView txtItems = view.findViewById(R.id.txt_items);
             TextView txtPrice = view.findViewById(R.id.txt_price);
 
-        Glide.with(MyordersActivity.this).load(Base_URL + listdatum.getImage()).placeholder(R.drawable.slider).into(imgView);
+            Glide.with(MyordersActivity.this).load(Base_URL + listdatum.getImage()).placeholder(R.drawable.slider).into(imgView);
             txtTitle.setText("" + listdatum.getTitle());
             txtItems.setText(" X " + listdatum.getQuantity() + " Items");
             txtPrice.setText(sessionManager.getStringData(SessionManager.CURRNCY) + " " + listdatum.getPrice() + "");
@@ -305,6 +314,7 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
             lnrView.addView(view);
         }
     }
+
     private void CancelOrder(String oid) {
 
     }
