@@ -18,11 +18,15 @@ public class GetResult {
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                Log.e("message", " : " + response.message());
-                Log.e("body", " : " + response.body());
-                Log.e("callno", " : " + callno);
-                myListener.callback(response.body(), callno);
-                GetService.close();
+                try {
+                    Log.e("message", " : " + response.message());
+                    Log.e("body", " : " + response.body());
+                    Log.e("callno", " : " + callno);
+                    myListener.callback(response.body(), callno);
+                    GetService.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
 
             @Override
