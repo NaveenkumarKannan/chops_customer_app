@@ -120,6 +120,8 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
                         OrderDatum datum = myOrder.getOrderData().get(i);
                         datumList.add(datum);
                     }
+
+
                     txtItmecount.setText(datumList.size() + " orders");
                     MyOrderAdepter myOrderAdepter = new MyOrderAdepter(datumList);
                     recycleAddress.setAdapter(myOrderAdepter);
