@@ -254,11 +254,7 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
             holder.btnCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    JsonParser jsonParser = new JsonParser();
-                    Call<JsonObject> call = APIClient.getInterface().deleteAddress((JsonObject) jsonParser.parse(jsonObject.toString()));
-                    GetResult getResult = new GetResult();
 
-                    getResult.callForLogin(call, "2");
                 }
             });
         }
