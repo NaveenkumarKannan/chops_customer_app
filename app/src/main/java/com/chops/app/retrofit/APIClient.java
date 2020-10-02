@@ -17,7 +17,6 @@ public class APIClient {
 
     public static UserService getInterface() {
 
-        Log.e("ApiClient", Base_URL+Append_URL);
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()

@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -48,7 +47,6 @@ import static com.chops.app.utils.GetService.ISORDER;
 
 public class MyordersActivity extends AppCompatActivity implements GetResult.MyListener {
 
-
     @BindView(R.id.recycle_address)
     RecyclerView recycleAddress;
 
@@ -56,7 +54,6 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
     SessionManager sessionManager;
     @BindView(R.id.txt_itmecount)
     TextView txtItmecount;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +71,6 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
         recycleAddress.setLayoutManager(recyclerLayoutManager);
 
         myOrder();
-
 
     }
 
@@ -131,11 +127,8 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
 
             } catch (Exception e) {
                 e.printStackTrace();
-
             }
-
         }
-
     }
 
     public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
