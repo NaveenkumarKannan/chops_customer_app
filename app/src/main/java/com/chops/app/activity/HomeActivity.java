@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentManager;
 
 
 import com.chops.app.R;
+import com.chops.app.Utility;
 import com.chops.app.database.DatabaseHelper;
 import com.chops.app.fragment.HomeFragment;
 import com.chops.app.fragment.ItemItemFragment;
@@ -202,12 +203,11 @@ public class HomeActivity extends AppCompatActivity {
 
             Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.home_frame);
             if (fragment instanceof HomeFragment && fragment.isVisible()) {
-                finish();
+                Utility.Companion.onBack(this,"Are you sure that you want to close Chops app?");
             } else {
                 super.onBackPressed();
             }
         }
-
     }
 
     public boolean isView() {

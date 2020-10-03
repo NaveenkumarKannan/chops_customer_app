@@ -30,6 +30,13 @@ public class Productlist implements Serializable {
     private String mSdesc;
     @SerializedName("status")
     private String mStatus;
+    @SerializedName("types")
+    private String mTypes;
+    @SerializedName("skin")
+    private int skin;
+
+    @SerializedName("pieces_type")
+    private String piecesType;
 
     public int getSkin() {
         return skin;
@@ -39,21 +46,13 @@ public class Productlist implements Serializable {
         this.skin = skin;
     }
 
-    @SerializedName("skin")
-    private int skin;
-
-    private int pieces;
-
-    public int getPieces() {
-        return pieces;
+    public String getPiecesType() {
+        return piecesType;
     }
 
-    public void setPieces(int pieces) {
-        this.pieces = pieces;
+    public void setPiecesType(String piecesType) {
+        this.piecesType = piecesType;
     }
-
-    @SerializedName("types")
-    private String mTypes;
 
     private int contity;
     private int totalPrice;

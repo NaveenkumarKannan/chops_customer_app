@@ -18,8 +18,6 @@ import java.util.regex.Pattern;
 
 public class GetService {
     public static double totalTemp;
-    public static int skin_type;
-    public static int pieces_type;
     public static boolean ISORDER=false;
     public static Dialog dialog;
     public static boolean isRef=false;

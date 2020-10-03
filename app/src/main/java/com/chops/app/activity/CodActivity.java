@@ -7,12 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.chops.app.R;
+import com.chops.app.Utility;
 import com.chops.app.database.DatabaseHelper;
 import com.chops.app.model.UserData;
 import com.chops.app.retrofit.APIClient;
 import com.chops.app.retrofit.GetResult;
 import com.chops.app.utils.GetService;
 import com.chops.app.utils.SessionManager;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -29,8 +31,8 @@ public class CodActivity extends AppCompatActivity implements GetResult.MyListen
     String pid;
     String quantity;
     String total;
-    int skin_type = 0;
-    int pieces_type = 0;
+    String pieces_type;
+    String dDate;
 
     UserData userData;
     SessionManager sessionManager;
@@ -51,8 +53,8 @@ public class CodActivity extends AppCompatActivity implements GetResult.MyListen
             pid = extras.getString("pid");
             quantity = extras.getString("quantity");
             total = extras.getString("total");
-            skin_type  = extras.getInt("skin_type");
-            pieces_type  = extras.getInt("pieces_type");
+            pieces_type  = extras.getString("pieces_type");
+            dDate  = extras.getString("dDate");
             sendOrder();
         }
 
@@ -68,10 +70,11 @@ public class CodActivity extends AppCompatActivity implements GetResult.MyListen
             jsonObject.put("pid", pid);
             jsonObject.put("qty", quantity);
             jsonObject.put("total", total);
-            jsonObject.put("skin_type", skin_type);
             jsonObject.put("pieces_type", pieces_type);
+            jsonObject.put("ddate", dDate);
             jsonObject.put("type", "cod");
 
+            Utility.Companion.log(new Gson().toJson(jsonObject));
             JsonParser jsonParser = new JsonParser();
             Call<JsonObject> call = APIClient.getInterface().sendOrder((JsonObject) jsonParser.parse(jsonObject.toString()));
             GetResult getResult = new GetResult();

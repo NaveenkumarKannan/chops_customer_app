@@ -1,5 +1,6 @@
 package com.chops.app.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,10 +21,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.chops.app.R;
+import com.chops.app.Utility;
 import com.chops.app.model.Listdatum;
 import com.chops.app.model.OrderDatum;
 import com.chops.app.model.Orderdata;
 import com.chops.app.model.Orderlist;
+import com.chops.app.model.Response;
 import com.chops.app.model.UserData;
 import com.chops.app.retrofit.APIClient;
 import com.chops.app.retrofit.GetResult;
@@ -259,20 +263,44 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
             holder.btnCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    GetService.showPrograss(MyordersActivity.this);
-                    JSONObject jsonObject = new JSONObject();
-                    try {
-                        jsonObject.put("", order.getmDeleted());
+                    Utility.Companion.showDialogOK(view.getContext(), "Are you sure that you want to cancel the order (Order #00" + order.getOrderid()+")?", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (which) {
+                                case DialogInterface.BUTTON_POSITIVE:
+                                    GetService.showPrograss(MyordersActivity.this);
+                                    JSONObject jsonObject = new JSONObject();
+                                    try {
+                                        jsonObject.put("oid", order.getOrderid());
 
-                        JsonParser jsonParser = new JsonParser();
-                        Call<JsonObject> call = APIClient.getInterface().orderCancel((JsonObject) jsonParser.parse(jsonObject.toString()));
-                        GetResult getResult = new GetResult();
-                        getResult.callForLogin(call, "1");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    Intent intent =new Intent(MyordersActivity.this,CancelActivity.class);
-                    startActivity(intent);
+                                        JsonParser jsonParser = new JsonParser();
+                                        Call<JsonObject> call = APIClient.getInterface().orderCancel((JsonObject) jsonParser.parse(jsonObject.toString()));
+                                        GetResult getResult = new GetResult();
+                                        getResult.setMyListener(new GetResult.MyListener() {
+                                            @Override
+                                            public void callback(JsonObject result, String callNo) {
+                                                Gson gson = new Gson();
+                                                Response respons = gson.fromJson(result.toString(), Response.class);
+                                                if (respons.getResult().equalsIgnoreCase("true")) {
+                                                    holder.btnCancel.setVisibility(View.GONE);
+                                                    holder.txtCancel.setVisibility(View.VISIBLE);
+                                                    Intent intent =new Intent(MyordersActivity.this,CancelActivity.class);
+                                                    startActivity(intent);
+                                                }else {
+                                                    Utility.Companion.makeText(view.getContext(),respons.getResponseMsg() );
+                                                }
+                                            }
+                                        });
+                                        getResult.callBack(call, "1");
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    break;
+                                case DialogInterface.BUTTON_NEGATIVE:
+                                    break;
+                            }
+                        }
+                    });
 
                 }
             });

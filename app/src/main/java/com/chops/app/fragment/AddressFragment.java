@@ -40,9 +40,6 @@ import butterknife.OnClick;
 import retrofit2.Call;
 
 import static com.chops.app.utils.GetService.isRef;
-import static com.chops.app.utils.GetService.pieces_type;
-import static com.chops.app.utils.GetService.skin_type;
-
 
 public class AddressFragment extends Fragment implements GetResult.MyListener {
 
@@ -54,6 +51,7 @@ public class AddressFragment extends Fragment implements GetResult.MyListener {
     UserData user;
     SessionManager sessionManager;
     String pid;
+    String pieces_type;
     String quantity;
     String total;
 
@@ -73,8 +71,7 @@ public class AddressFragment extends Fragment implements GetResult.MyListener {
         pid = getArguments().getString("pid");
         quantity = getArguments().getString("quantity");
         total = getArguments().getString("total");
-        skin_type = getArguments().getInt("skin_type");
-        pieces_type = getArguments().getInt("pieces_type");
+        pieces_type = getArguments().getString("pieces_type");
     }
 
     @Override
@@ -168,8 +165,7 @@ public class AddressFragment extends Fragment implements GetResult.MyListener {
                         bundle.putString("pid", pid);
                         bundle.putString("quantity", quantity);
                         bundle.putString("total", total);
-                        bundle.putInt("skin_type", skin_type);
-                        bundle.putInt("pieces_type", pieces_type);
+                        bundle.putString("pieces_type", pieces_type);
                         fragment.setArguments(bundle);
                         FragmentManager fragmentManager = getFragmentManager();
                         fragmentManager.beginTransaction().replace(R.id.home_frame, fragment).addToBackStack(null).commit();

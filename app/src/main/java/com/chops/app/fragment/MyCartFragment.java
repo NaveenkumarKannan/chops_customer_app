@@ -122,6 +122,7 @@ public class MyCartFragment extends Fragment {
                 rModel.setTypes(res.getString(13));
                 rModel.setContity(res.getInt(14));
                 rModel.setTotalPrice(res.getInt(15));
+                rModel.setPiecesType(res.getString(16));
                 mycartList.add(rModel);
             }
             Log.e("size", " : " + mycartList.size());
@@ -139,19 +140,23 @@ public class MyCartFragment extends Fragment {
     public void onViewClicked() {
         String quantity = "";
         String pid = "";
+        String pieces_type = "";
         if (mycartList.size() != 0) {
             if (sessionManager.getIntData(ODERMINIMUM) <= GetService.totalTemp) {
                 for (int i = 0; i < mycartList.size(); i++) {
                     if (i == 0) {
                         pid = pid + mycartList.get(i).getId();
+                        pieces_type = pieces_type + mycartList.get(i).getPiecesType();
                         quantity = quantity + String.valueOf(mycartList.get(i).getContity());
                     } else {
                         pid = pid + "," + mycartList.get(i).getId();
+                        pieces_type = pieces_type + "," + mycartList.get(i).getPiecesType();
                         quantity = quantity + "," + String.valueOf(mycartList.get(i).getContity());
                     }
                 }
 
                 Log.e("pid", "" + pid);
+                Log.e("pieces_type", "" + pieces_type);
                 Log.e("quantity", "" + quantity);
 
                 AddressFragment fragment = new AddressFragment();
@@ -159,8 +164,7 @@ public class MyCartFragment extends Fragment {
                 bundle.putString("pid", pid);
                 bundle.putString("quantity", quantity);
                 bundle.putString("total", "" + GetService.totalTemp);
-                bundle.putInt("skin_type", Integer.parseInt("" + GetService.skin_type));
-                bundle.putInt("pieces_type", Integer.parseInt("" + GetService.pieces_type));
+                bundle.putString("pieces_type", pieces_type);
                 fragment.setArguments(bundle);
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.home_frame, fragment).addToBackStack(null).commit();
@@ -179,8 +183,6 @@ public class MyCartFragment extends Fragment {
         for (int i = 0; i < mycartList.size(); i++) {
 
             Productlist productlist = mycartList.get(i);
-            GetService.skin_type=productlist.getSkin();
-            GetService.pieces_type=productlist.getPieces();
             double temp = Double.parseDouble(productlist.getPrice()) * productlist.getContity();
             total = total + temp;
 

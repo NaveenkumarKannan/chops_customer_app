@@ -120,16 +120,13 @@
         <TextView
             android:id="@+id/txt_cancel"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" Order Cancelled "
+            android:layout_height="30dp"
+            android:text="   Order Cancelled   "
             android:gravity="center"
             android:visibility="gone"
-            android:padding="2dp"
-            android:textSize="14sp"
             android:textColor="@color/colorwhite"
             android:fontFamily="@font/ubuntu_medium"
             android:background="@android:color/darker_gray"/>
-
     </LinearLayout>
 
 </LinearLayout>

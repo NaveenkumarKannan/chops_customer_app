@@ -198,13 +198,17 @@ public class ItemCategoryAdapter extends RecyclerView.Adapter<ItemCategoryAdapte
                             addClickablePartTextViewResizable(Html.fromHtml(tv.getText().toString()), tv, maxLine, expandText,
                                     viewMore), TextView.BufferType.SPANNABLE);
                 } else {
-                    int lineEndIndex = tv.getLayout().getLineEnd(tv.getLayout().getLineCount() - 1);
-                    String text = tv.getText().subSequence(0, lineEndIndex) + " " + expandText;
-                    tv.setText(text);
-                    tv.setMovementMethod(LinkMovementMethod.getInstance());
-                    tv.setText(
-                            addClickablePartTextViewResizable(Html.fromHtml(tv.getText().toString()), tv, lineEndIndex, expandText,
-                                    viewMore), TextView.BufferType.SPANNABLE);
+                    try {
+                        int lineEndIndex = tv.getLayout().getLineEnd(tv.getLayout().getLineCount() - 1);
+                        String text = tv.getText().subSequence(0, lineEndIndex) + " " + expandText;
+                        tv.setText(text);
+                        tv.setMovementMethod(LinkMovementMethod.getInstance());
+                        tv.setText(
+                                addClickablePartTextViewResizable(Html.fromHtml(tv.getText().toString()), tv, lineEndIndex, expandText,
+                                        viewMore), TextView.BufferType.SPANNABLE);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
             }
         });

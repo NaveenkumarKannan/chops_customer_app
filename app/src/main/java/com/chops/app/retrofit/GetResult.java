@@ -39,6 +39,31 @@ public class GetResult {
         });
     }
 
+    public void callBack(Call<JsonObject> call, final String callNo) {
+
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                try {
+                    Log.e("message", " : " + response.message());
+                    Log.e("body", " : " + response.body());
+                    Log.e("callno", " : " + callNo);
+                    myListener.callback(response.body(), callNo);
+                    GetService.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                GetService.close();
+                myListener.callback(null, callNo);
+                call.cancel();
+                t.printStackTrace();
+            }
+        });
+    }
     public interface MyListener {
         // you can define any parameter as per your requirement
         public void callback(JsonObject result, String callNo);

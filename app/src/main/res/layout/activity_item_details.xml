@@ -249,6 +249,17 @@
                         android:padding="2dp"
                         android:text="Large Piece"
                         android:textColor="@color/colorblack" />
+                    <RadioButton
+                        android:id="@+id/rbPieceCircle"
+                        style="@style/Font"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:padding="2dp"
+                        android:text="Circle Piece"
+                        android:textColor="@color/colorblack"
+                        android:visibility="gone"/>
+
                 </RadioGroup>
 
             </LinearLayout>

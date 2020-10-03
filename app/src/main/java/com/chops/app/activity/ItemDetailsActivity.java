@@ -81,8 +81,10 @@ public class ItemDetailsActivity extends AppCompatActivity {
     RadioButton rbPieceMedium;
     @BindView(R.id.rbPieceLarge)
     RadioButton rbPieceLarge;
+    @BindView(R.id.rbPieceCircle)
+    RadioButton rbPieceCircle;
     int skin = 0;
-    int pieces = 0;
+    String pieces = "0";
 
     DatabaseHelper helper;
     final int[] count = {0};
@@ -110,24 +112,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-        rgPiece.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch (i){
-                    case R.id.rbPieceSmall:
-                        pieces = 2;
-                        break;
-                    case R.id.rbPieceMedium:
-                        pieces = 1;
-                        break;
-                    case R.id.rbPieceLarge:
-                        pieces = 0;
-                        break;
-                }
-            }
-        });
         /*if(produc.getSkin() == 1){
             rbTrue.setChecked(true);
             rbFalse.setChecked(false);
@@ -135,6 +119,59 @@ public class ItemDetailsActivity extends AppCompatActivity {
             rbTrue.setChecked(false);
             rbFalse.setChecked(true);
         }*/
+
+        rgPiece.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.rbPieceSmall:
+                        pieces = "1";
+                        break;
+                    case R.id.rbPieceMedium:
+                        pieces = "2";
+                        break;
+                    case R.id.rbPieceLarge:
+                        pieces = "3";
+                        break;
+                    case R.id.rbPieceCircle:
+                        pieces = "4";
+                        break;
+                }
+            }
+        });
+        if(produc.getPiecesType().equals("0")){
+            pieces = "0";
+            rgPiece.setVisibility(View.GONE);
+        }else if(produc.getPiecesType().equals("4")) {
+            pieces = "4";
+            rbPieceCircle.setChecked(true);
+            rbPieceCircle.setVisibility(View.VISIBLE);
+            rbPieceSmall.setVisibility(View.GONE);
+            rbPieceMedium.setVisibility(View.GONE);
+            rbPieceLarge.setVisibility(View.GONE);
+        }else {
+            rbPieceCircle.setVisibility(View.GONE);
+        }
+        switch (produc.getPiecesType()) {
+            case "1":
+                pieces = "1";
+                rbPieceSmall.setChecked(true);
+                rbPieceMedium.setChecked(false);
+                rbPieceLarge.setChecked(false);
+                break;
+            case "2":
+                pieces = "2";
+                rbPieceSmall.setChecked(false);
+                rbPieceMedium.setChecked(true);
+                rbPieceLarge.setChecked(false);
+                break;
+            case "3":
+                pieces = "3";
+                rbPieceSmall.setChecked(false);
+                rbPieceMedium.setChecked(false);
+                rbPieceLarge.setChecked(true);
+                break;
+        }
         Glide.with(ItemDetailsActivity.this).load(Base_URL + "/" + produc.getImage()).into(imgP);
         txtTitle.setText("" + produc.getName());
         txtDesc.setText("" + produc.getSdesc());
@@ -183,6 +220,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     txtCount.setVisibility(View.VISIBLE);
                     txtCount.setText("" + count[0]);
                     produc.setContity(count[0]);
+                    produc.setPiecesType(pieces);
                     Log.e("INsert", "--> " + helper.insertData(produc));
                 }
                 Cursor resw = helper.getAllData();
@@ -201,6 +239,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 count[0] = count[0] + 1;
                 txtCount.setText("" + count[0]);
                 produc.setContity(count[0]);
+                produc.setPiecesType(pieces);
                 Log.e("INsert", "--> " + helper.insertData(produc));
                 Cursor resws = helper.getAllData();
                 txtTcount.setText("" + resws.getCount());

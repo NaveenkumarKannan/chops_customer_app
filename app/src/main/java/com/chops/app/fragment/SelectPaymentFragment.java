@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.chops.app.R;
+import com.chops.app.Utility;
 import com.chops.app.activity.CodActivity;
 import com.chops.app.activity.RazerpayActivity;
 
@@ -39,8 +40,9 @@ public class SelectPaymentFragment extends Fragment {
     RadioGroup radioGroup;
     @BindView(R.id.btn_countinue)
     TextView btnCountinue;
-    @BindView(R.id.ed_date)
-    EditText edDate;
+    @BindView(R.id.tvd_date)
+    TextView tvdDate;
+    String dDate;
     private SimpleDateFormat dateFormatter;
     private DatePickerDialog datePickerDialogCustomerDob;
 
@@ -48,8 +50,7 @@ public class SelectPaymentFragment extends Fragment {
     String pid;
     String quantity;
     String total;
-    int skin_type;
-    int pieces_type;
+    String pieces_type;
 
 
     public SelectPaymentFragment() {
@@ -81,14 +82,12 @@ public class SelectPaymentFragment extends Fragment {
         pid = bundle.getString("pid");
         quantity = bundle.getString("quantity");
         total = bundle.getString("total");
-        skin_type = bundle.getInt("skin_type");
-        pieces_type = bundle.getInt("pieces_type");
+        pieces_type = bundle.getString("pieces_type");
 
         Log.e("aid", "" + aid);
         Log.e("pid", "" + pid);
         Log.e("quantity", "" + quantity);
         Log.e("total", "" + total);
-        Log.e("skin_type", "" + skin_type);
         Log.e("pieces_type", "" + pieces_type);
 
         return view;
@@ -103,7 +102,9 @@ public class SelectPaymentFragment extends Fragment {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
-                edDate.setText(dateFormatter.format(newDate.getTime()));
+                tvdDate.setText(dateFormatter.format(newDate.getTime()));
+                dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                dDate = dateFormatter.format(newDate.getTime());
             }
 
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
@@ -112,33 +113,37 @@ public class SelectPaymentFragment extends Fragment {
 
     @OnClick(R.id.btn_countinue)
     public void onViewClicked() {
-        if (radioButton.isChecked()) {
-            Intent intent = new Intent(getActivity(), CodActivity.class);
-            intent.putExtra("aid", aid);
-            intent.putExtra("pid", pid);
-            intent.putExtra("quantity", quantity);
-            intent.putExtra("total", total);
-            intent.putExtra("pieces_type", pieces_type);
-            intent.putExtra("skin_type", skin_type);
-            startActivity(intent);
-            getActivity().finish();
+        if(dDate!=null) {
+            if (radioButton.isChecked()) {
+                Intent intent = new Intent(getActivity(), CodActivity.class);
+                intent.putExtra("aid", aid);
+                intent.putExtra("pid", pid);
+                intent.putExtra("quantity", quantity);
+                intent.putExtra("total", total);
+                intent.putExtra("pieces_type", pieces_type);
+                intent.putExtra("dDate", dDate);
+                startActivity(intent);
+                getActivity().finish();
 
-        } else if (radioButton2.isChecked()) {
-            Intent intent = new Intent(getActivity(), RazerpayActivity.class);
-            intent.putExtra("aid", aid);
-            intent.putExtra("pid", pid);
-            intent.putExtra("quantity", quantity);
-            intent.putExtra("total", total);
-            intent.putExtra("pieces_type", pieces_type);
-            intent.putExtra("skin_type", skin_type);
-            startActivity(intent);
-            getActivity().finish();
+            } else if (radioButton2.isChecked()) {
+                Intent intent = new Intent(getActivity(), RazerpayActivity.class);
+                intent.putExtra("aid", aid);
+                intent.putExtra("pid", pid);
+                intent.putExtra("quantity", quantity);
+                intent.putExtra("total", total);
+                intent.putExtra("pieces_type", pieces_type);
+                intent.putExtra("dDate", dDate);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        }else {
+            Utility.Companion.makeText(getContext(), "Select Delivery Date");
         }
     }
 
-    @OnClick(R.id.ed_date)
+    @OnClick(R.id.tvd_date)
     public void onClick(View v) {
-        if(v == edDate){
+        if(v == tvdDate){
            datePickerDialogCustomerDob.show();
         }
     }

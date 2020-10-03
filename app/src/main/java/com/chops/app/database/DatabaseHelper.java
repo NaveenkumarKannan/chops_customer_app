@@ -33,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String ICOL_14 = "types";
     public static final String ICOL_15 = "Contity";
     public static final String ICOL_16 = "TotalPrice";
+    public static final String ICOL_17 = "pieces_type";
 
 
     public DatabaseHelper(Context context) {
@@ -42,7 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, PID TEXT , cid TEXT ,discount TEXT , gross TEXT , image TEXT, name Text, net Text, pipack Text, price Text, sdesc Text, status Text, tax Text, types Text, Contity Text, TotalPrice Text )");
+        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, PID TEXT , cid TEXT ,discount TEXT , gross TEXT , image TEXT, name Text, net Text, pipack Text, price Text, sdesc Text, status Text, tax Text, types Text, Contity Text, TotalPrice Text, pieces_type Text )");
     }
 
     @Override
@@ -69,6 +70,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             contentValues.put(ICOL_14, rModel.getTypes());
             contentValues.put(ICOL_15, rModel.getContity());
             contentValues.put(ICOL_16, rModel.getTotalPrice());
+            contentValues.put(ICOL_17, rModel.getPiecesType());
             long result = db.insert(TABLE_NAME, null, contentValues);
 
             if (result == -1) {
