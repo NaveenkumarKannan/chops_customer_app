@@ -39,7 +39,7 @@
         <activity
             android:name=".activity.AddressActivity"
             android:screenOrientation="portrait"
-
+            android:theme="@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activity.MyordersActivity"
@@ -60,7 +60,7 @@
         <activity
             android:name=".activity.HomeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/HomeTheme"
+            android:theme="@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activity.SignUpActivity"

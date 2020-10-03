@@ -61,8 +61,6 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.home_frame)
     FrameLayout homeFrame;
 
-    @BindView(R.id.img_search)
-    ImageView imgSearch;
     @BindView(R.id.img_cart)
     ImageView imgCart;
 
@@ -128,7 +126,7 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick({R.id.home, R.id.myprofile, R.id.myoder, R.id.address, R.id.contect, R.id.logout, R.id.about, R.id.tramscondition, R.id.privecy, R.id.faq, R.id.img_search, R.id.img_cart, R.id.img_close, R.id.btn_gotocart, R.id.img_notification})
+    @OnClick({R.id.home, R.id.myprofile, R.id.myoder, R.id.address, R.id.contect, R.id.logout, R.id.about, R.id.tramscondition, R.id.privecy, R.id.faq, R.id.img_cart, R.id.img_close, R.id.btn_gotocart, R.id.img_notification})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.home:
@@ -162,9 +160,6 @@ public class HomeActivity extends AppCompatActivity {
                 break;
             case R.id.faq:
                 startActivity(new Intent(HomeActivity.this, TramsAndConditionActivity.class));
-                break;
-            case R.id.img_search:
-                startActivity(new Intent(HomeActivity.this, SearchActivity.class));
                 break;
             case R.id.img_close:
 

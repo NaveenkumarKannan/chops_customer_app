@@ -221,7 +221,6 @@
                         android:layout_gravity="center"
                         android:padding="2dp"
                         android:gravity="center"
-
                         android:textSize="18dp"
                         android:text="180.00"
                         android:textColor="@color/colorAccent"

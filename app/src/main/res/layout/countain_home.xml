@@ -9,7 +9,7 @@
         android:id="@+id/toolbar_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorAccent"
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/HomeTheme">
 
@@ -18,13 +18,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/toolbar_title"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center|bottom"
+            <TextView
+                style="@style/Font"
+                android:textColor="@color/colorwhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="20sp"
                 android:gravity="center"
-                android:src="@drawable/chopslogo"/>
+                android:text="Chops" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -41,19 +43,19 @@
 
 
                 <RelativeLayout
-                    android:id="@+id/rlt_noti"
+                    android:id="@+id/rtl_noti"
                     android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="8dp"
-                    android:gravity="center"
-                    android:padding="2dp">
+                    android:layout_height="45dp">
 
                     <ImageView
                         android:id="@+id/img_notification"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:tint="@color/colorwhite"
                         android:src="@drawable/ic_notification" />
 
                     <TextView
@@ -62,38 +64,33 @@
                         android:layout_height="18dp"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentRight="true"
-                        android:layout_marginTop="-8dp"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/circle2"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginRight="2dp"
+                        android:background="@drawable/circle"
                         android:gravity="center"
                         android:maxLength="2"
-                        android:text=""
-                        android:visibility="gone"
-                        android:textColor="@color/colorblack"
-                        android:textSize="8dp"
-                        android:textStyle="bold" />
+                        android:text="10"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="8dp" />
                 </RelativeLayout>
 
 
-                <ImageView
-                    android:id="@+id/img_search"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:visibility="gone"
-                    android:layout_marginRight="8dp"
-                    android:src="@drawable/ic_search" />
+
 
                 <RelativeLayout
                     android:layout_width="45dp"
-                    android:layout_height="45dp">
+                    android:layout_height="45dp"
+                    android:layout_marginRight="8dp">
 
                     <ImageView
                         android:id="@+id/img_cart"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
                         android:layout_centerInParent="true"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:tint="@color/colorwhite"
                         android:src="@drawable/ic_supermarket" />
 
                     <TextView
@@ -104,7 +101,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="2dp"
                         android:layout_marginRight="2dp"
-                        android:background="@drawable/circle2"
+                        android:background="@drawable/circle"
                         android:gravity="center"
                         android:maxLength="2"
                         android:text="10"
@@ -132,23 +129,19 @@
             android:layout_height="56dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorwhite"
             android:gravity="center|right"
-            android:orientation="horizontal"
-            android:visibility="gone">
+            android:visibility="gone"
+            android:orientation="horizontal">
 
-            <TextView
+            <Button
                 android:id="@+id/btn_gotocart"
                 style="@style/Font"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|center"
-                android:layout_margin="5dp"
-                android:background="@drawable/rounded_add"
-                android:drawableLeft="@drawable/ic_shopping"
-                android:drawablePadding="10dp"
-                android:padding="10dp"
-                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_margin="15dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:background="@drawable/button"
                 android:text=" Go To Cart  "
                 android:textColor="@color/colorwhite" />
         </LinearLayout>

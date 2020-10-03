@@ -1,5 +1,7 @@
 package com.chops.app.activity;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -9,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -54,6 +57,8 @@ public class ProfileActivity extends AppCompatActivity implements GetResult.MyLi
     @BindView(R.id.txt_city)
     TextView txtCity;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +67,7 @@ public class ProfileActivity extends AppCompatActivity implements GetResult.MyLi
         sessionManager = new SessionManager(ProfileActivity.this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("My Profile");
+
         userData = sessionManager.getUserDetails("");
         if (userData != null) {
             txtProfilename.setText("" + userData.getFname() + " " + userData.getLname());

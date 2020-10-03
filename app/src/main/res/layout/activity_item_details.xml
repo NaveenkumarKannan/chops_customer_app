@@ -30,9 +30,9 @@
                 android:id="@+id/img_back"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:tint="@color/colorblack"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/circle"
                 android:padding="10dp"
                 android:src="@drawable/ic_arrow" />
 
@@ -71,7 +71,6 @@
                             android:id="@+id/img_cart"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/circle"
                             android:padding="12dp"
                             android:src="@drawable/ic_supermarket" />
 
@@ -81,7 +80,7 @@
                             android:layout_width="18dp"
                             android:layout_height="18dp"
                             android:layout_marginLeft="25dp"
-                            android:background="@drawable/circle2"
+                            android:background="@drawable/circle"
                             android:gravity="center"
                             android:text="1"
                             android:textColor="@color/colorAccent"
@@ -149,12 +148,14 @@
                 android:padding="5dp"
                 android:layout_marginLeft="10dp"
                 android:text="Skin types:"
+                android:visibility="gone"
                 android:textColor="@color/colorblack"
                 android:textSize="14dp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:visibility="gone"
                 android:layout_marginLeft="10dp">
 
                 <RadioGroup
@@ -192,6 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_margin="5dp"
+                android:visibility="gone"
                 android:background="@color/colormenubg" />
             <TextView
                 android:layout_width="wrap_content"
@@ -423,7 +425,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/ubuntu_medium"
                         android:padding="10dp"
-                        android:text="Price"
+                        android:text="Price (per Kg)"
                         android:textColor="@color/colorblack"
                         android:textSize="14dp" />
 

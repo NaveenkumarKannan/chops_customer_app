@@ -44,7 +44,6 @@
                 android:layout_marginRight="10dp"
                 android:gravity="left"
                 android:padding="10dp"
-
                 android:textColor="@color/colorblack"
                 android:textStyle="bold" />
 

@@ -9,7 +9,7 @@
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
 
@@ -49,11 +49,37 @@
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:padding="10dp"
+                android:visibility="gone"
                 android:text="Pay With Online"
                 android:textColor="@color/colorblack" />
         </RadioGroup>
-    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|left"
+            android:padding="3dp"
+            android:layout_margin="2dp"
+            android:text="Choose a date for delivery" />
 
+        <EditText
+            android:id="@+id/ed_date"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edittext"
+            android:enabled="true"
+            android:drawablePadding="8dp"
+            android:drawableLeft="@drawable/calender"
+            android:hint="Date"
+            android:drawableRight="@drawable/ic_expand"
+            android:drawableTint="@color/colorAccent"
+            android:textColor="@color/colorblack" />
+    </LinearLayout>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,8 +102,8 @@
             android:paddingRight="10dp"
             android:text="  Confirm Order"
             android:textColor="@color/colorwhite"
-            android:textSize="18dp"
             android:textStyle="bold" />
+
 
 
     </LinearLayout>

@@ -103,7 +103,6 @@
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:background="@drawable/rounded_add"
                         android:drawableRight="@drawable/ic_rightwhite"
                         android:drawablePadding="1dp"
                         android:gravity="center"
@@ -129,6 +128,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:tint="@color/colorblack"
             android:src="@drawable/ic_shopping" />
 
         <TextView

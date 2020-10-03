@@ -1,21 +1,27 @@
 package com.chops.app.fragment;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-
 import com.chops.app.R;
 import com.chops.app.activity.CodActivity;
 import com.chops.app.activity.RazerpayActivity;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +39,10 @@ public class SelectPaymentFragment extends Fragment {
     RadioGroup radioGroup;
     @BindView(R.id.btn_countinue)
     TextView btnCountinue;
+    @BindView(R.id.ed_date)
+    EditText edDate;
+    private SimpleDateFormat dateFormatter;
+    private DatePickerDialog datePickerDialogCustomerDob;
 
     String aid;
     String pid;
@@ -65,46 +75,71 @@ public class SelectPaymentFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_select_payment, container, false);
         ButterKnife.bind(this, view);
         Bundle bundle = getArguments();
+        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        setDateTimeField();
         aid = bundle.getString("aid");
         pid = bundle.getString("pid");
         quantity = bundle.getString("quantity");
         total = bundle.getString("total");
-        skin_type= bundle.getInt("skin_type");
+        skin_type = bundle.getInt("skin_type");
         pieces_type = bundle.getInt("pieces_type");
 
-        Log.e("aid",""+aid);
-        Log.e("pid",""+pid);
-        Log.e("quantity",""+quantity);
-        Log.e("total",""+total);
-        Log.e("skin_type",""+skin_type);
-        Log.e("pieces_type",""+pieces_type);
+        Log.e("aid", "" + aid);
+        Log.e("pid", "" + pid);
+        Log.e("quantity", "" + quantity);
+        Log.e("total", "" + total);
+        Log.e("skin_type", "" + skin_type);
+        Log.e("pieces_type", "" + pieces_type);
 
         return view;
+    }
+
+    private void setDateTimeField() {
+
+
+        Calendar newCalendar = Calendar.getInstance();
+        datePickerDialogCustomerDob = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                edDate.setText(dateFormatter.format(newDate.getTime()));
+            }
+
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
     }
 
     @OnClick(R.id.btn_countinue)
     public void onViewClicked() {
         if (radioButton.isChecked()) {
-            Intent intent=new Intent(getActivity(), CodActivity.class);
-            intent.putExtra("aid",aid);
-            intent.putExtra("pid",pid);
-            intent.putExtra("quantity",quantity);
-            intent.putExtra("total",total);
-            intent.putExtra("pieces_type",pieces_type);
-            intent.putExtra("skin_type",skin_type);
+            Intent intent = new Intent(getActivity(), CodActivity.class);
+            intent.putExtra("aid", aid);
+            intent.putExtra("pid", pid);
+            intent.putExtra("quantity", quantity);
+            intent.putExtra("total", total);
+            intent.putExtra("pieces_type", pieces_type);
+            intent.putExtra("skin_type", skin_type);
             startActivity(intent);
             getActivity().finish();
 
         } else if (radioButton2.isChecked()) {
-            Intent intent=new Intent(getActivity(), RazerpayActivity.class);
-            intent.putExtra("aid",aid);
-            intent.putExtra("pid",pid);
-            intent.putExtra("quantity",quantity);
-            intent.putExtra("total",total);
-            intent.putExtra("pieces_type",pieces_type);
-            intent.putExtra("skin_type",skin_type);
+            Intent intent = new Intent(getActivity(), RazerpayActivity.class);
+            intent.putExtra("aid", aid);
+            intent.putExtra("pid", pid);
+            intent.putExtra("quantity", quantity);
+            intent.putExtra("total", total);
+            intent.putExtra("pieces_type", pieces_type);
+            intent.putExtra("skin_type", skin_type);
             startActivity(intent);
             getActivity().finish();
+        }
+    }
+
+    @OnClick(R.id.ed_date)
+    public void onClick(View v) {
+        if(v == edDate){
+           datePickerDialogCustomerDob.show();
         }
     }
 }

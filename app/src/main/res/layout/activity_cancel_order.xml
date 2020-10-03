@@ -50,6 +50,7 @@
                     android:id="@+id/btnclose"
                     android:layout_width="20dp"
                     android:layout_height="20sp"
+                    android:tint="@color/colorblack"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/close" />
 

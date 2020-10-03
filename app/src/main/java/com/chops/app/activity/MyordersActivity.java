@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -213,6 +214,14 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
             holder.txtDateandstatus.setText("" + order.getStatus() + " on " + order.getOdate());
             setJoinPlayrList(holder.lvlItem, order.getListdata());
 
+            if(!order.getmDeleted().equals("0")){
+
+                holder.btnCancel.setVisibility(View.GONE);
+                holder.txtCancel.setVisibility(View.VISIBLE);
+            }else {
+                holder.btnCancel.setVisibility(View.VISIBLE);
+                holder.txtCancel.setVisibility(View.GONE);
+            }
             holder.lvlClick.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -227,11 +236,11 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
                         animate.setDuration(500);
                         animate.setFillAfter(true);
                         holder.lvlItem.startAnimation(animate);
-                        holder.btnCancel.setVisibility(View.GONE);
                         holder.lvlItem.setVisibility(View.GONE);
+                        holder.lvlCancel.setVisibility(View.GONE);
                     } else {
                         holder.lvlItem.setVisibility(View.VISIBLE);
-                        holder.btnCancel.setVisibility(View.VISIBLE);
+                        holder.lvlCancel.setVisibility(View.VISIBLE);
                         TranslateAnimation animate = new TranslateAnimation(
                                 0,
                                 0,
@@ -245,13 +254,29 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
 
                     }
                 }
+
             });
             holder.btnCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    GetService.showPrograss(MyordersActivity.this);
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("", order.getmDeleted());
+
+                        JsonParser jsonParser = new JsonParser();
+                        Call<JsonObject> call = APIClient.getInterface().orderCancel((JsonObject) jsonParser.parse(jsonObject.toString()));
+                        GetResult getResult = new GetResult();
+                        getResult.callForLogin(call, "1");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Intent intent =new Intent(MyordersActivity.this,CancelActivity.class);
+                    startActivity(intent);
 
                 }
             });
+
         }
 
         @Override
@@ -269,9 +294,13 @@ public class MyordersActivity extends AppCompatActivity implements GetResult.MyL
             @BindView(R.id.lvl_item)
             LinearLayout lvlItem;
             @BindView(R.id.btn_cancel)
-            LinearLayout btnCancel;
+            Button btnCancel;
+            @BindView(R.id.txt_cancel)
+            TextView txtCancel;
             @BindView(R.id.lvl_click)
             LinearLayout lvlClick;
+            @BindView(R.id.lvl_cancel)
+            LinearLayout lvlCancel;
             @BindView(R.id.img_right)
             ImageView imgRight;
 

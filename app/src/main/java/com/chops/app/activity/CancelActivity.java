@@ -38,7 +38,6 @@ public class CancelActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.btn_back:
-                startActivity(new Intent(CancelActivity.this, HomeActivity.class));
                 finish();
                 break;
         }

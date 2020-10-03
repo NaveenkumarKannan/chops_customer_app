@@ -20,6 +20,36 @@ public class OrderDatum {
     private String mStatus;
     @SerializedName("total_price")
     private String mTotalPrice;
+    @SerializedName("pieces_type")
+    private String mPiecesType;
+    @SerializedName("ddate")
+    private String mddate;
+    @SerializedName("deleted")
+    private String mDeleted;
+
+    public String getmPiecesType() {
+        return mPiecesType;
+    }
+
+    public void setmPiecesType(String mPiecesType) {
+        this.mPiecesType = mPiecesType;
+    }
+
+    public String getMddate() {
+        return mddate;
+    }
+
+    public void setMddate(String mddate) {
+        this.mddate = mddate;
+    }
+
+    public String getmDeleted() {
+        return mDeleted;
+    }
+
+    public void setmDeleted(String mDeleted) {
+        this.mDeleted = mDeleted;
+    }
 
     public List<Listdatum> getListdata() {
         return mListdata;
