@@ -3,17 +3,20 @@ package com.chops.app.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.chops.app.R;
-import com.chops.app.model.Response;
+import com.chops.app.model.User;
 import com.chops.app.retrofit.APIClient;
 import com.chops.app.retrofit.GetResult;
 import com.chops.app.utils.GetService;
+import com.chops.app.utils.SessionManager;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -32,46 +35,44 @@ public class SignInActivity extends AppCompatActivity implements GetResult.MyLis
     EditText edEmail;
     @BindView(R.id.ed_password)
     EditText edPassword;
-    @BindView(R.id.ed_mobile)
-    EditText edMobile;
-    @BindView(R.id.ed_city)
-    EditText edCity;
     @BindView(R.id.btn_singup)
     Button btnSingup;
-    @BindView(R.id.ed_fname)
-    EditText edFname;
-    @BindView(R.id.ed_lname)
-    EditText edLname;
+    SessionManager sessionManager;
+    @BindView(R.id.txt_forgot)
+    TextView txtForgot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        ButterKnife.bind(this);
+
         getSupportActionBar().hide();
-
+        ButterKnife.bind(this);
+        sessionManager = new SessionManager(SignInActivity.this);
     }
 
-    @OnClick(R.id.btn_singup)
-    public void onViewClicked() {
-        if (isValidation()) {
-            signUp();
+    public boolean isValidation() {
+
+        if (!GetService.EmailValidator(edEmail.getText().toString())) {
+            edEmail.setError("Required email");
+            return false;
+        } else if (TextUtils.isEmpty(edPassword.getText().toString())) {
+            edPassword.setError("Required password");
+            return false;
         }
+
+        return true;
     }
 
-    private void signUp() {
+    private void login() {
         GetService.showPrograss(SignInActivity.this);
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("fname", edFname.getText().toString());
-            jsonObject.put("lname", edLname.getText().toString());
             jsonObject.put("email", edEmail.getText().toString());
             jsonObject.put("password", edPassword.getText().toString());
-            jsonObject.put("mobile", edMobile.getText().toString());
-            jsonObject.put("city", edCity.getText().toString());
 
             JsonParser jsonParser = new JsonParser();
-            Call<JsonObject> call = APIClient.getInterface().getSignUp((JsonObject) jsonParser.parse(jsonObject.toString()));
+            Call<JsonObject> call = APIClient.getInterface().getSignIn((JsonObject) jsonParser.parse(jsonObject.toString()));
             GetResult getResult = new GetResult();
             getResult.setMyListener(this);
             getResult.callForLogin(call, "1");
@@ -80,49 +81,38 @@ public class SignInActivity extends AppCompatActivity implements GetResult.MyLis
         }
     }
 
-    public boolean isValidation() {
-        if (TextUtils.isEmpty(edFname.getText().toString())) {
-            edFname.setError("Required First Name");
-            return false;
-        } else if (TextUtils.isEmpty(edLname.getText().toString())) {
-            edLname.setError("Required Last Name");
-            return false;
-        } else if (TextUtils.isEmpty(edEmail.getText().toString())) {
-            edEmail.setError("Required Email");
-            return false;
-        } else if (TextUtils.isEmpty(edPassword.getText().toString())) {
-            edPassword.setError("Required Password");
-            return false;
-        } else if (TextUtils.isEmpty(edMobile.getText().toString())) {
-            edMobile.setError("Required Phone Number");
-            return false;
-        } else if (TextUtils.isEmpty(edCity.getText().toString())) {
-            edCity.setError("Required Password");
-            return false;
-        }
-
-        return true;
-    }
-
     @Override
     public void callback(JsonObject result, String callNo) {
-
+        GetService.close();
         if (callNo.equalsIgnoreCase("1") || result.toString().length() != 0) {
             Gson gson = new Gson();
-            Response response = gson.fromJson(result.toString(), Response.class);
+            User response = gson.fromJson(result.toString(), User.class);
             GetService.ToastMessege(SignInActivity.this, response.getResponseMsg());
             if (response.getResult().equalsIgnoreCase("true")) {
-                startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
+                sessionManager.setUserDetails("", response.getResultData());
+                sessionManager.setBooleanData(SessionManager.USERLOGIN, true);
+                startActivity(new Intent(SignInActivity.this, HomeActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 finish();
             }
-
         }
-
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+    @OnClick({R.id.txt_forgot, R.id.btn_singup, R.id.btn_sign})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.txt_forgot:
+                startActivity(new Intent(SignInActivity.this, ForgotActivity.class));
+                break;
+            case R.id.btn_singup:
+                if (isValidation()) {
+                    login();
+                }
+                break;
+            case R.id.btn_sign:
+                startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
+                break;
+            default:
+                break;
+        }
     }
 }

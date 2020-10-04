@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 
@@ -38,13 +39,13 @@ class Utility {
                     Toast.LENGTH_SHORT
                 ).show()
                 exit = true
-                Handler().postDelayed({ exit = false }, 3 * 1000.toLong())
+                Handler(Looper.getMainLooper()).postDelayed({ exit = false }, 3 * 1000.toLong())
             }
         }
 
         fun onBack(activity: Activity, message: String?) {
             showDialogOK(activity, message,
-                    DialogInterface.OnClickListener { dialog, which ->
+                    DialogInterface.OnClickListener { _, which ->
                         when (which) {
                             DialogInterface.BUTTON_POSITIVE -> activity.finish()
                             DialogInterface.BUTTON_NEGATIVE -> {

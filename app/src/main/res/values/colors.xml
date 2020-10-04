@@ -10,4 +10,11 @@
     <color name="colorred">#FF2D55</color>
     <color name="colorstatus">#A0A0A0</color>
     <color name="colortext">#574E4E</color>
+
+    <color name="white">#fff</color>
+    <color name="light_white">#dddddddd</color>
+    <color name="colorAccentPink">#FF4081</color>
+    <color name="golden_brown">#f8af41</color>
+    <color name="gray">#7f7f80</color>
+
 </resources>

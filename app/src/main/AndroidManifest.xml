@@ -3,19 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.chops.app">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:name=".MyApplication"
         android:theme="@style/FullscreenTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.SignInOtpActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".activity.AuthenticationLogin" />
         <activity
             android:name=".activity.FAQActivity"
             android:screenOrientation="portrait"
@@ -50,7 +50,6 @@
             android:name=".activity.ProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/them3"
-
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activity.ItemDetailsActivity"
@@ -63,15 +62,17 @@
             android:theme="@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".activity.SignUpActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/them3"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
             android:name=".activity.SignInActivity"
             android:screenOrientation="portrait"
             android:theme="@style/them3"
-            tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".activity.SignUpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/them3"
+            tools:ignore="LockedOrientationActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".activity.LoginstartActivity"
             android:screenOrientation="portrait"
@@ -93,21 +94,18 @@
         <activity android:name=".activity.RazerpayActivity" />
         <activity
             android:name=".activity.NotificationDetailsActivity"
-            android:theme="@style/them3"></activity>
+            android:theme="@style/them3" />
         <activity
             android:name=".activity.NotificationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/them3"
             tools:ignore="LockedOrientationActivity" />
-
         <activity
             android:name=".activity.TramsAndConditionActivity"
             android:label="Terms &amp; Conditions"
             android:screenOrientation="portrait"
             android:theme="@style/them3"
             tools:ignore="LockedOrientationActivity" />
-
-
         <activity
             android:name=".activity.ContectusActivity"
             android:label="Contact us"
@@ -120,7 +118,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/them3"
             tools:ignore="LockedOrientationActivity" />
-
         <activity
             android:name=".activity.PrivecyPolicyActivity"
             android:label="Privecy Policy"
@@ -131,8 +128,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

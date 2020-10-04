@@ -15,6 +15,9 @@ public interface UserService {
     @POST(APIClient.Append_URL + "login.php")
     Call<JsonObject> getSignIn(@Body JsonObject object);
 
+    @POST(APIClient.Append_URL + "login_phone.php")
+    Call<JsonObject> getSignInPhone(@Body JsonObject object);
+
     @POST(APIClient.Append_URL + "home.php")
     Call<JsonObject> getHome(@Body JsonObject object);
 

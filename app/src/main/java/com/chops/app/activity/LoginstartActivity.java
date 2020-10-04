@@ -36,10 +36,11 @@ public class LoginstartActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_signin:
-                startActivity(new Intent(LoginstartActivity.this, SignUpActivity.class));
+                //startActivity(new Intent(LoginstartActivity.this, SignInActivity.class));
+                startActivity(new Intent(LoginstartActivity.this, SignInOtpActivity.class));
                 break;
             case R.id.txt_signup:
-                startActivity(new Intent(LoginstartActivity.this, SignInActivity.class));
+                startActivity(new Intent(LoginstartActivity.this, SignUpActivity.class));
                 break;
             default:
                 break;

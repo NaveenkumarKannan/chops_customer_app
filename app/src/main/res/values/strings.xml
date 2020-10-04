@@ -23,4 +23,5 @@
     <string name="type">Home/office</string>
     <string name="emtydata">No Product</string>
     <string name="confpassword">Confirm Password</string>
+    <string name="one_two_three">123</string>
 </resources>

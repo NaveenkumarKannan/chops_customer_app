@@ -7,7 +7,7 @@
     android:animateLayoutChanges="true"
     android:background="@color/colorwhite"
     android:orientation="vertical"
-    tools:context=".activity.SignInActivity">
+    tools:context=".activity.SignUpActivity">
 
 
     <ScrollView
