@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.net.ConnectivityManager
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -61,6 +62,15 @@ class Utility {
                     .setNegativeButton("NO", okListener)
                     .create()
                     .show()
+        }
+
+
+        fun checkInternetConnection(context: Context): Boolean {
+            val conMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            // ARE WE CONNECTED TO THE NET
+            return (conMgr.activeNetworkInfo != null
+                    && conMgr.activeNetworkInfo!!.isAvailable
+                    && conMgr.activeNetworkInfo!!.isConnected)
         }
     }
 }

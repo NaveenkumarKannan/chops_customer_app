@@ -227,7 +227,7 @@
                         android:layout_height="wrap_content"
                         android:checked="true"
                         android:padding="2dp"
-                        android:text="Small Piece"
+                        android:text="Small"
                         android:textColor="@color/colorblack" />
 
                     <RadioButton
@@ -237,7 +237,7 @@
                         android:layout_height="wrap_content"
                         android:checked="true"
                         android:padding="2dp"
-                        android:text="Medium Piece"
+                        android:text="Medium"
                         android:textColor="@color/colorblack" />
 
                     <RadioButton
@@ -247,7 +247,7 @@
                         android:layout_height="wrap_content"
                         android:checked="false"
                         android:padding="2dp"
-                        android:text="Large Piece"
+                        android:text="Large"
                         android:textColor="@color/colorblack" />
                     <RadioButton
                         android:id="@+id/rbPieceCircle"

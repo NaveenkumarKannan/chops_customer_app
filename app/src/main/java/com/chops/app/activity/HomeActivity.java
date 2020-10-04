@@ -26,7 +26,10 @@ import com.chops.app.fragment.HomeFragment;
 import com.chops.app.fragment.ItemItemFragment;
 import com.chops.app.fragment.MyCartFragment;
 import com.chops.app.model.UserData;
+import com.chops.app.utils.GetService;
 import com.chops.app.utils.SessionManager;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -88,6 +91,9 @@ public class HomeActivity extends AppCompatActivity {
         homeActivity = this;
         ButterKnife.bind(this);
         setSupportActionBar(toolbarTop);
+
+        GetService.mAuthSignIn();
+
         txtNoti = findViewById(R.id.txt_noti);
         txtCount = findViewById(R.id.txt_Count);
         lvlMycart = findViewById(R.id.lvl_mycart);
@@ -148,6 +154,7 @@ public class HomeActivity extends AppCompatActivity {
                 break;
             case R.id.logout:
                 sessionManager.logoutUser();
+                GetService.logoutUser();
                 startActivity(new Intent(HomeActivity.this, SignInActivity.class));
                 finish();
                 break;

@@ -56,45 +56,54 @@ public class SignInOtpActivity extends AppCompatActivity implements GetResult.My
     }
 
     private void login() {
-        GetService.showPrograss(SignInOtpActivity.this);
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("mobile", etPhone.getText().toString());
+        if(Utility.Companion.checkInternetConnection(this)) {
+            GetService.showPrograss(SignInOtpActivity.this);
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("mobile", etPhone.getText().toString());
 
-            JsonParser jsonParser = new JsonParser();
-            Call<JsonObject> call = APIClient.getInterface().getSignInPhone((JsonObject) jsonParser.parse(jsonObject.toString()));
-            GetResult getResult = new GetResult();
-            getResult.setMyListener(this);
-            getResult.callForLogin(call, "1");
-        } catch (JSONException e) {
-            e.printStackTrace();
+                JsonParser jsonParser = new JsonParser();
+                Call<JsonObject> call = APIClient.getInterface().getSignInPhone((JsonObject) jsonParser.parse(jsonObject.toString()));
+                GetResult getResult = new GetResult();
+                getResult.setMyListener(this);
+                getResult.callForLogin(call, "1");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }else {
+            Utility.Companion.makeText(this, "No Network Connection. Try again after sometime...");
         }
     }
 
     @Override
     public void callback(JsonObject result, String callNo) {
-        GetService.close();
-        if (callNo.equalsIgnoreCase("1") || result.toString().length() != 0) {
-            Gson gson = new Gson();
+        try {
+            GetService.close();
+            if (callNo.equalsIgnoreCase("1") || result.toString().length() != 0) {
+                Gson gson = new Gson();
 
-            Utility.Companion.log("Login Response: " + gson.toJson(result));
+                Utility.Companion.log("Login Response: " + gson.toJson(result));
 
-            User response = gson.fromJson(result.toString(), User.class);
-            //GetService.ToastMessege(SignInOtpActivity.this, response.getResponseMsg());
-            if (response.getResult().equalsIgnoreCase("true")) {
+                User response = gson.fromJson(result.toString(), User.class);
+                //GetService.ToastMessege(SignInOtpActivity.this, response.getResponseMsg());
+                if (response.getResult().equalsIgnoreCase("true")) {
 
-                Intent intent = new Intent(SignInOtpActivity.this, AuthenticationLogin.class);
-                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.putExtra("mobile", etPhone.getText().toString());
-                startActivity(intent);
-            }else {
-                GetService.ToastMessege(SignInOtpActivity.this, response.getResponseMsg());
-                Intent intent = new Intent(SignInOtpActivity.this, SignUpActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.putExtra("mobile", etPhone.getText().toString());
-                startActivity(intent);
+                    Intent intent = new Intent(SignInOtpActivity.this, AuthenticationLogin.class);
+                    //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.putExtra("mobile", etPhone.getText().toString());
+                    startActivity(intent);
+                } else {
+                    GetService.ToastMessege(SignInOtpActivity.this, response.getResponseMsg());
+                    Intent intent = new Intent(SignInOtpActivity.this, SignUpActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.putExtra("mobile", etPhone.getText().toString());
+                    startActivity(intent);
+                }
             }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
     }
 
     @OnClick({R.id.btn_sign_in, R.id.btn_sign_up})

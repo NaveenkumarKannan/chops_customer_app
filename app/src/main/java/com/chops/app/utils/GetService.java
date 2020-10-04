@@ -11,12 +11,29 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.chops.app.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GetService {
+    public static FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    public static boolean mAuthSignIn() {
+        if (mAuth != null) {
+            FirebaseUser user = mAuth.getCurrentUser();
+            return user != null;
+        }
+        return false;
+    }
+    public static boolean logoutUser(){
+        if (mAuth != null) {
+            FirebaseAuth.getInstance().signOut();
+            return true;
+        }
+        return false;
+    }
     public static double totalTemp;
     public static boolean ISORDER=false;
     public static Dialog dialog;
@@ -48,13 +65,17 @@ public class GetService {
     }
 
     public static void showPrograss(Context context) {
-        dialog = new Dialog(context);
-        dialog.setContentView(R.layout.custome_loder);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        // set the custom dialog components - text, image and button
-        ProgressBar progressBar = dialog.findViewById(R.id.img_loader);
-        dialog.setCancelable(false);
-        dialog.show();
+        try {
+            dialog = new Dialog(context);
+            dialog.setContentView(R.layout.custome_loder);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            // set the custom dialog components - text, image and button
+            ProgressBar progressBar = dialog.findViewById(R.id.img_loader);
+            dialog.setCancelable(false);
+            dialog.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public static void close() {
