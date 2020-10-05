@@ -48,7 +48,6 @@ public class SignUpActivity extends AppCompatActivity implements GetResult.MyLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
-        getSupportActionBar().hide();
 
 
         Bundle bundle = getIntent().getExtras();

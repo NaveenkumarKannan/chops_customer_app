@@ -123,6 +123,7 @@ public class MyCartFragment extends Fragment {
                 rModel.setContity(res.getInt(14));
                 rModel.setTotalPrice(res.getInt(15));
                 rModel.setPiecesType(res.getString(16));
+                rModel.setUnitType(res.getString(17));
                 mycartList.add(rModel);
             }
             Log.e("size", " : " + mycartList.size());

@@ -70,20 +70,20 @@
         <activity
             android:name=".activity.SignUpActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/them3"
+            android:theme="@style/FullscreenTheme"
             tools:ignore="LockedOrientationActivity"
             android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".activity.LoginstartActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/them3"
+            android:theme="@style/FullscreenTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activity.FirstActivity"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="fullSensor"
+            android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -91,7 +91,7 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".activity.RazerpayActivity" />
+        <activity android:name=".activity.RazerpayActivity"/>
         <activity
             android:name=".activity.NotificationDetailsActivity"
             android:theme="@style/them3" />
@@ -130,7 +130,6 @@
             android:resource="@array/preloaded_fonts" />
     </application>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -155,7 +155,7 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.logout:
                 sessionManager.logoutUser();
                 GetService.logoutUser();
-                startActivity(new Intent(HomeActivity.this, SignInActivity.class));
+                startActivity(new Intent(HomeActivity.this, SignInOtpActivity.class));
                 finish();
                 break;
             case R.id.about:

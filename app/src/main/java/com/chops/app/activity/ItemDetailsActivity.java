@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.chops.app.R;
+import com.chops.app.Utility;
 import com.chops.app.database.DatabaseHelper;
 import com.chops.app.model.Productlist;
 import com.chops.app.utils.SessionManager;
@@ -83,6 +85,13 @@ public class ItemDetailsActivity extends AppCompatActivity {
     RadioButton rbPieceLarge;
     @BindView(R.id.rbPieceCircle)
     RadioButton rbPieceCircle;
+    @BindView(R.id.edit_quantity)
+    TextView editQuantity;
+    @BindView(R.id.price_kg)
+    TextView priceQuantity;
+    @BindView(R.id.lvl_pieces)
+    LinearLayout lvlPieces;
+
     int skin = 0;
     String pieces = "0";
 
@@ -142,6 +151,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
         if(produc.getPiecesType().equals("0")){
             pieces = "0";
             rgPiece.setVisibility(View.GONE);
+            lvlPieces.setVisibility(View.GONE);
         }else if(produc.getPiecesType().equals("4")) {
             pieces = "4";
             rbPieceCircle.setChecked(true);
@@ -181,6 +191,8 @@ public class ItemDetailsActivity extends AppCompatActivity {
         txtPic.setText("" + produc.getPipack());
         txtPrice.setText(sessionManager.getStringData(SessionManager.CURRNCY) + " " + produc.getPrice());
         txtNet.setText("" + produc.getNet());
+        editQuantity.setText(" "+produc.getUnitType());
+        priceQuantity.setText("(per " + produc.getUnitType()+")");
 
 
         int qrt = helper.getCard(produc.getId(), produc.getCid());
@@ -258,6 +270,18 @@ public class ItemDetailsActivity extends AppCompatActivity {
     public void fragment() {
         ISCART = true;
         finish();
+
+    }
+
+    public void onToast(View view) {
+        if(count[0] >0){
+            Utility.Companion.makeText(this,"Product added to cart");
+            finish();
+        }else {
+            Utility.Companion.makeText(this,"Kindly increase the product quantity");
+        }
+
+
 
     }
 }

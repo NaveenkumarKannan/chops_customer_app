@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Chops</string>
-    <string name="singin">Sign In</string>
-    <string name="singup">Sign Up</string>
+    <string name="singin">Login</string>
+    <string name="singup">Register</string>
     <string name="forgot">Reset</string>
     <string name="enteremial">Enter Your Email Address</string>
     <string name="password">Enter Your Password</string>

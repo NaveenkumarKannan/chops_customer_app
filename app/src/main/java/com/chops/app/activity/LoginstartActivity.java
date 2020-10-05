@@ -27,7 +27,7 @@ public class LoginstartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginstart);
         ButterKnife.bind(this);
-        getSupportActionBar().hide();
+
 
 
     }

@@ -44,14 +44,15 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                  >
                     <com.google.android.material.textfield.TextInputEditText
                         android:singleLine="true"
                         android:layout_weight="1"
                         android:id="@+id/ed_fname"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:background="@drawable/edittext"
                         android:layout_marginTop="10dp"
                         android:paddingTop="4dp"
                         android:layout_marginEnd="10dp"
@@ -64,7 +65,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                     <com.google.android.material.textfield.TextInputEditText
                         android:singleLine="true"
                         android:layout_weight="1"
@@ -75,7 +77,6 @@
                         android:drawableLeft="@drawable/ic_user_dashboard"
                         android:textColorHint="@color/colortext"
                         android:layout_height="50dp"
-                        android:background="@drawable/edittext"
                         android:layout_marginTop="10dp"
                         android:paddingTop="4dp"
                         android:hint="@string/lastname" />
@@ -84,13 +85,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <com.google.android.material.textfield.TextInputEditText
                     android:singleLine="true"
                     android:id="@+id/ed_email"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@drawable/edittext"
                     android:textColor="@color/colortext"
                     android:drawablePadding="8dp"
                     android:drawableLeft="@drawable/ic_email"
@@ -123,13 +124,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <com.google.android.material.textfield.TextInputEditText
                     android:singleLine="true"
                     android:id="@+id/ed_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@drawable/edittext"
                     android:textColor="@color/colortext"
                     android:drawablePadding="8dp"
                     android:drawableLeft="@drawable/ic_smartphone"
@@ -143,7 +144,8 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <com.google.android.material.textfield.TextInputEditText
                     android:singleLine="true"
                     android:id="@+id/ed_city"

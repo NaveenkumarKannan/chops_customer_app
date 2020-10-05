@@ -38,6 +38,17 @@ public class Productlist implements Serializable {
     @SerializedName("pieces_type")
     private String piecesType;
 
+    public String getUnitType() {
+        return unitType;
+    }
+
+    public void setUnitType(String unitType) {
+        this.unitType = unitType;
+    }
+
+    @SerializedName("unit_type")
+    private String unitType;
+
     public int getSkin() {
         return skin;
     }
