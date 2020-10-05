@@ -192,7 +192,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
         txtPrice.setText(sessionManager.getStringData(SessionManager.CURRNCY) + " " + produc.getPrice());
         txtNet.setText("" + produc.getNet());
         editQuantity.setText(" "+produc.getUnitType());
-        priceQuantity.setText("(per " + produc.getUnitType()+")");
+        priceQuantity.setText("(per " + produc.getUnitQuantity()+produc.getUnitType()+")");
 
 
         int qrt = helper.getCard(produc.getId(), produc.getCid());

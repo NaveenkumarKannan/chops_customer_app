@@ -37,6 +37,10 @@ public class Productlist implements Serializable {
 
     @SerializedName("pieces_type")
     private String piecesType;
+    @SerializedName("unit_type")
+    private String unitType;
+    @SerializedName("unit_quantity")
+    private String unitQuantity;
 
     public String getUnitType() {
         return unitType;
@@ -46,8 +50,13 @@ public class Productlist implements Serializable {
         this.unitType = unitType;
     }
 
-    @SerializedName("unit_type")
-    private String unitType;
+    public String getUnitQuantity() {
+        return unitQuantity;
+    }
+
+    public void setUnitQuantity(String unitQuantity) {
+        this.unitQuantity = unitQuantity;
+    }
 
     public int getSkin() {
         return skin;
