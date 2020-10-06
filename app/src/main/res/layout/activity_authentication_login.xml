@@ -6,6 +6,7 @@
     android:background="#fff"
     android:layout_height="match_parent"
     tools:context=".activity.AuthenticationLogin">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -53,7 +54,11 @@
 
             <include layout="@layout/otp_sign_in_l1"/>
         </LinearLayout>
-
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:scrollbars="none">
         <LinearLayout
             android:id="@+id/layout2"
             android:visibility="visible"
@@ -72,6 +77,7 @@
 
             <include layout="@layout/otp_sign_in_l2"/>
         </LinearLayout>
+        </ScrollView>
 
         <LinearLayout
             android:id="@+id/layout3"
