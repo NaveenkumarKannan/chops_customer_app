@@ -33,7 +33,7 @@
         android:fontFamily="@font/ubuntu"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:textColor="@color/golden_brown"
+        android:textColor="@color/colorAccent"
         android:textStyle="bold"/>
     <com.chaos.view.PinView
         android:id="@+id/pinView"

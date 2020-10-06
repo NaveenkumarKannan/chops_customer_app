@@ -27,9 +27,9 @@
         <item name="fontFamily">@font/ubuntu</item>
         <item name="android:textColor">@color/colortext</item>
         <item name="android:textColorSecondary">@color/colorblack</item>
-        <item name="colorPrimary">#FF9800</item>
-        <item name="colorPrimaryDark">#FF9800</item>
-        <item name="colorAccent">#FF9800</item>
+        <item name="colorPrimary">#fec216</item>
+        <item name="colorPrimaryDark">#fec216</item>
+        <item name="colorAccent">#fec216</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
@@ -37,9 +37,9 @@
     <style name="them2" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="fontFamily">@font/ubuntu</item>
         <item name="android:textColor">@color/colortext</item>
-        <item name="colorPrimary">#FF9800</item>
-        <item name="colorPrimaryDark">#FF9800</item>
-        <item name="colorAccent">#FF9800</item>
+        <item name="colorPrimary">#fec216</item>
+        <item name="colorPrimaryDark">#fec216</item>
+        <item name="colorAccent">#fec216</item>
     </style>
 
     <style name="them3" parent="Theme.AppCompat.Light">">
@@ -47,9 +47,9 @@
         <item name="titleTextColor">@android:color/white</item>
         <item name="fontFamily">@font/ubuntu_light</item>
         <item name="android:textColor">@color/colortext</item>
-        <item name="colorPrimary">#FF9800</item>
-        <item name="colorPrimaryDark">#FF9800</item>
-        <item name="colorAccent">#FF9800</item>
+        <item name="colorPrimary">#fec216</item>
+        <item name="colorPrimaryDark">#fec216</item>
+        <item name="colorAccent">#fec216</item>
     </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -57,9 +57,9 @@
         <item name="fontFamily">@font/ubuntu</item>
         <item name="android:textColor">@color/colortext</item>
         <item name="android:textColorSecondary">@color/colorblack</item>
-        <item name="colorPrimary">#FF9800</item>
-        <item name="colorPrimaryDark">#FF9800</item>
-        <item name="colorAccent">#FF9800</item>
+        <item name="colorPrimary">#fec216</item>
+        <item name="colorPrimaryDark">#fec216</item>
+        <item name="colorAccent">#fec216</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
