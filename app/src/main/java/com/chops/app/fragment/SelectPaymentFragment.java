@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
-import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.chops.app.R;
 import com.chops.app.Utility;
 import com.chops.app.activity.CodActivity;
+import com.chops.app.activity.CongratulactionActivity;
 import com.chops.app.activity.RazerpayActivity;
 
 import java.text.SimpleDateFormat;
@@ -43,6 +44,24 @@ public class SelectPaymentFragment extends Fragment {
     @BindView(R.id.tvd_date)
     TextView tvdDate;
     String dDate;
+    @BindView(R.id.btn_order_now)
+    TextView btnOrderNow;
+    @BindView(R.id.btn_schedule)
+    TextView btnSchedule;
+    @BindView(R.id.radioslot1)
+    RadioButton radioslot1;
+    @BindView(R.id.radioslot2)
+    RadioButton radioslot2;
+    @BindView(R.id.radioslot3)
+    RadioButton radioslot3;
+    @BindView(R.id.radioslot4)
+    RadioButton radioslot4;
+    @BindView(R.id.radioslot5)
+    RadioButton radioslot5;
+    @BindView(R.id.radioGroupslot)
+    RadioGroup radioGroupslot;
+    @BindView(R.id.lvl_order)
+    LinearLayout lvlOrder;
     private SimpleDateFormat dateFormatter;
     private DatePickerDialog datePickerDialogCustomerDob;
 
@@ -113,7 +132,7 @@ public class SelectPaymentFragment extends Fragment {
 
     @OnClick(R.id.btn_countinue)
     public void onViewClicked() {
-        if(dDate!=null) {
+        if (dDate != null) {
             if (radioButton.isChecked()) {
                 Intent intent = new Intent(getActivity(), CodActivity.class);
                 intent.putExtra("aid", aid);
@@ -136,15 +155,25 @@ public class SelectPaymentFragment extends Fragment {
                 startActivity(intent);
                 getActivity().finish();
             }
-        }else {
+        } else {
             Utility.Companion.makeText(getContext(), "Select Delivery Date");
         }
     }
 
-    @OnClick(R.id.tvd_date)
+    @OnClick({R.id.tvd_date,R.id.btn_order_now,R.id.btn_schedule})
     public void onClick(View v) {
-        if(v == tvdDate){
-           datePickerDialogCustomerDob.show();
+        if (v == tvdDate) {
+            datePickerDialogCustomerDob.show();
+        }
+        switch (v.getId()) {
+            case R.id.btn_order_now:
+                Intent intent = new Intent(getActivity(), CongratulactionActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+                break;
+            case R.id.btn_schedule:
+                lvlOrder.setVisibility(View.VISIBLE);
+                break;
         }
     }
 }
